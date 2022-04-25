@@ -5,13 +5,12 @@ workflows:
     max_build_duration: 120
     environment:
       groups:
-        - appstore_credentials # <-- (Includes APP_STORE_CONNECT_ISSUER_ID, APP_STORE_CONNECT_KEY_IDENTIFIER, APP_STORE_CONNECT_PRIVATE_KEY)
+        - appstore_credentials
       vars:
         XCODE_WORKSPACE: "Runner.xcworkspace"
         XCODE_SCHEME: "Runner"                
-        BUNDLE_ID: "com.example.kobitionIntegration" # <-- Put your bundle id here
-        APP_STORE_ID: 1111111111 # <-- Use the TestFlight Apple id number (An automatically generated ID assigned to your app) found under General > App Information > Apple ID. 
-        JSON: "{\"filename\":\"${APPNAME}\",\"appPath\":\"${KAPPPATH}\"}"
+        BUNDLE_ID: "com.example.kobitionIntegration"
+        APP_STORE_ID: 1111111111 
       flutter: stable
       xcode: latest
       cocoapods: default
@@ -49,7 +48,7 @@ workflows:
           --export-options-plist=/Users/builder/export_options.plist
       - name: Kobiton integration
         script: |
-          APP_URL= $(\"appPath\":\"/build/ios/ipa/kobition_integration.ipa\" jq -r '.app_url')
+          APP_URL= $(\"appPath\":\"build/ios/ipa/kobition_integration.ipa\" jq -r '.app_url')
           curl -X POST https://api.kobiton.com/v1/apps \
           -H 'Authorization: Basic c0eb5ab4-3f3f-43c0-9325-1ea473349ca8' \
           -H 'content-type: application/json' \

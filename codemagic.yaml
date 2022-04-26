@@ -53,8 +53,8 @@ workflows:
           curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
           -H 'Authorization: Basic c0eb5ab4-3f3f-43c0-9325-1ea473349ca8' \
           -H 'Content-Type: application/json' \
-          -H 'Accept: application/json'
-          -d 'kobition_integration.ipa'
+          -H 'Accept: application/json' \
+          -d "{\"filename\": \"kobition_integration.ipa\"}"  
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log

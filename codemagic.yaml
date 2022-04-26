@@ -11,8 +11,8 @@ workflows:
         XCODE_SCHEME: "Runner"                
         BUNDLE_ID: "com.example.kobitionIntegration"
         APP_STORE_ID: 1111111111 
-        APPPATH: "build/ios/ipa/kobition_integration.ipa"
-        JSON: "{\"filename\":\"kobition_integration.ipa\"}"
+
+
       flutter: stable
       xcode: latest
       cocoapods: default
@@ -54,7 +54,7 @@ workflows:
           -H 'Authorization: Basic c0eb5ab4-3f3f-43c0-9325-1ea473349ca8' \
           -H 'Content-Type: application/json' \
           -H 'Accept: application/json'
-          -d '$JSON'
+          -d 'kobition_integration.ipa'
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log

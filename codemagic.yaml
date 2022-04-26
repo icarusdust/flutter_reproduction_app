@@ -51,7 +51,7 @@ workflows:
       - name: Kobiton integration
         script: |
           curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
-          -H 'Authorization: Basic c0eb5ab4-3f3f-43c0-9325-1ea473349ca8' \
+          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
           -H 'Content-Type: application/json' \
           -H 'Accept: application/json' \
           -d "{\"filename\": \"kobition_integration.ipa\"}"  

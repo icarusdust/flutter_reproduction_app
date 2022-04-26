@@ -50,11 +50,16 @@ workflows:
           --export-options-plist=/Users/builder/export_options.plist
       - name: Kobiton integration
         script: |
-          curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
+         APP_URL=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
           -H 'Content-Type: application/json' \
           -H 'Accept: application/json' \
-          -d "{\"filename\": \"kobition_integration.ipa\"}"  
+          -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.url')
+         curl
+          -T ${APP_URL} \
+          -H "Content-Type: application/octet-stream" \
+          -H "x-amz-tagging: unsaved=true" \
+          -X PUT presignedUrl
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log

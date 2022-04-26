@@ -11,6 +11,7 @@ workflows:
         XCODE_SCHEME: "Runner"                
         BUNDLE_ID: "com.example.kobitionIntegration"
         APP_STORE_ID: 1111111111 
+        APPPATH: "build/ios/ipa/kobition_integration.ipa"
       flutter: stable
       xcode: latest
       cocoapods: default
@@ -48,8 +49,45 @@ workflows:
           --export-options-plist=/Users/builder/export_options.plist
       - name: Kobiton integration
         script: |
-            curl -X POST https://api.kobiton.com/v1/apps nihalnevercode c0eb5ab4-3f3f-43c0-9325-1ea473349ca8 kobition_integration.ipa build/ios/ipa/kobition_integration.ipa
+            echo 'Step 1: Generate Basic Authorization'
 
+            BASICAUTH="$(echo -n nihalnevercode:c0eb5ab4-3f3f-43c0-9325-1ea473349ca8 | base64)"
+            header="Authorization: Basic $BASICAUTH"
+
+            echo 'Step 2: Generate Upload URL'
+            if [ -z "$APPID" ]; then
+            JSON="{\"filename\":\"${APPPATH}\"}"
+            else
+            JSON="{\"filename\":\"${APPPATH}\",\"appId\":$APPID}"
+            fi
+
+            curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
+            -H "$header" \
+            -H 'Content-Type: application/json' \
+            -H 'Accept: application/json' \
+            -d "$JSON" \
+            -o ".tmp.response.json"
+
+            UPLOADURL=`cat ".tmp.response.json" | ack -o --match '(?<=url\":")([_\%\&=\?\.aA-zZ0-9:/-]*)'`
+            KAPPPATH=`cat ".tmp.response.json" | ack -o --match '(?<=build/ios/ipa/kobition_integration.ipa\":")([_\%\&=\?\.aA-zZ0-9:/-]*)'`
+
+            echo
+            echo 'Step 3: Upload File To S3'
+
+            curl -T "${APPPATH}" \
+            -H 'content-type: application/octet-stream' \
+            -H 'x-amz-tagging: unsaved=true' \
+            -X PUT "${UPLOADURL}"
+
+            echo 'Step 4: Create Application Or Version'
+
+            JSON="{\"filename\":\"${APPNAME}\",\"appPath\":\"${KAPPPATH}\"}"
+
+            echo
+            curl -X POST https://api.kobiton.com/v1/apps \
+            -H "$header" \
+            -H 'content-type: application/json' \
+            -d "$JSON"
 #       APP_URL= $(\"filename\":\"*./kobition_integration.ipa\",\"appPath\":\"build/ios/ipa/kobition_integration.ipa\" jq -r '.app_url')
 #       curl -X POST https://api.kobiton.com/v1/apps \
 #       -H 'Authorization: Basic c0eb5ab4-3f3f-43c0-9325-1ea473349ca8' \

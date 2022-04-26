@@ -49,12 +49,6 @@ workflows:
           --export-options-plist=/Users/builder/export_options.plist
       - name: Kobiton integration
         script: |
-#       JSON="{\"filename\":\"*.ipa\",\"appPath\":\"/build/ios/ipa/kobition_integration.ipa\"}"
-#       curl -X POST https://api.kobiton.com/v1/apps \
-#       -H 'Authorization: Basic c0eb5ab4-3f3f-43c0-9325-1ea473349ca8' \
-#       -H 'content-type: application/json' \
-#       -d '$JSON'
-          
           curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
           -H 'Authorization: Basic c0eb5ab4-3f3f-43c0-9325-1ea473349ca8' \
           -H 'Content-Type: application/json' \

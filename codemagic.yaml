@@ -11,7 +11,8 @@ workflows:
         XCODE_SCHEME: "Runner"                
         BUNDLE_ID: "com.example.kobitionIntegration"
         APP_STORE_ID: 1111111111 
-        APPPATH: "/build/ios/ipa/kobition_integration.ipa"
+        APPPATH: "build/ios/ipa/kobition_integration.ipa"
+        
 
       flutter: stable
       xcode: latest
@@ -54,12 +55,23 @@ workflows:
           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
           -H 'Content-Type: application/json' \
           -H 'Accept: application/json' \
-          -d "{\"filename\": \"build/ios/ipa/kobition_integration.ipa\"}" | jq -r '.url')
+          -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.url')
+          
+         APP_PATH=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
+          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+          -H 'Content-Type: application/json' \
+          -H 'Accept: application/json' \
+          -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.appPath')
           
          curl -T "${APPPATH}" \
           -H 'content-type: application/octet-stream' \
           -H 'x-amz-tagging: unsaved=true' \
           -X PUT "${APP_URL}"
+          
+         curl -X POST https://api.kobiton.com/v1/apps \
+          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+          -H 'content-type: application/json' \
+          -d "{\"filename\": \"kobition_integration.ipa\", \"appPath\": \"${APP_PATH}\"}"
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log

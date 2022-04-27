@@ -54,9 +54,9 @@ workflows:
           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
           -H 'Content-Type: application/json' \
           -H 'Accept: application/json' \
-          -d "{\"filename\": \"@build/ios/ipa/kobition_integration.ipa\"}" | jq -r '.url')
+          -d "{\"filename\": \"build/ios/ipa/kobition_integration.ipa\"}" | jq -r '.url')
           
-         curl -T "@build/ios/ipa/kobition_integration.ipa" \
+         curl -T "build/ios/ipa/kobition_integration.ipa" \
           -H 'content-type: application/octet-stream' \
           -H 'x-amz-tagging: unsaved=true' \
           -X PUT "${APP_URL}"

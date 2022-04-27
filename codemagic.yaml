@@ -11,7 +11,7 @@ workflows:
         XCODE_SCHEME: "Runner"                
         BUNDLE_ID: "com.example.kobitionIntegration"
         APP_STORE_ID: 1111111111 
-
+        APPPATH: "/build/ios/ipa/kobition_integration.ipa"
 
       flutter: stable
       xcode: latest
@@ -56,7 +56,7 @@ workflows:
           -H 'Accept: application/json' \
           -d "{\"filename\": \"build/ios/ipa/kobition_integration.ipa\"}" | jq -r '.url')
           
-         curl -T "build/ios/ipa/kobition_integration.ipa" \
+         curl -T "${APPPATH}" \
           -H 'content-type: application/octet-stream' \
           -H 'x-amz-tagging: unsaved=true' \
           -X PUT "${APP_URL}"

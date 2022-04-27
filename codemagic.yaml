@@ -50,11 +50,7 @@ workflows:
           --export-options-plist=/Users/builder/export_options.plist
       - name: Kobiton integration
         script: |
-#      APP_PATH=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
-#       -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
-#       -H 'Content-Type: application/json' \
-#       -H 'Accept: application/json' \
-#       -d "{\"filename\":\"kobition_integration.ipa\"}" | jq -r '.appPath')
+
           
           
          APP_URL=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \

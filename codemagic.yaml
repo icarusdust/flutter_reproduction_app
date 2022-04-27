@@ -1,7 +1,7 @@
 workflows:
   ios-workflow:
     name: iOS Workflow
-    instance_type: mac_pro
+    instance_type: mac_mini_m1
     max_build_duration: 120
     environment:
       groups:
@@ -50,17 +50,21 @@ workflows:
           --export-options-plist=/Users/builder/export_options.plist
       - name: Kobiton integration
         script: |
+          APP_PATH=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
+          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+          -H 'Content-Type: application/json' \
+          -H 'Accept: application/json' \
+          -d "{\"filename\":\"kobition_integration.ipa\"}" | jq -r '.appPath')
+          
+          build/ios/ipa/kobition_integration.ipa
+          
          APP_URL=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
           -H 'Content-Type: application/json' \
           -H 'Accept: application/json' \
-          -d "{\"filename\": \"@build/ios/ipa/kobition_integration.ipa\"}" | jq -r '.url')
-         APP_PATH=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
-          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
-          -H 'Content-Type: application/json' \
-          -H 'Accept: application/json' \
-          -d "{\"filename\": \"@build/ios/ipa/kobition_integration.ipa\"}" | jq -r '.appPath')
-         curl -T "${APP_PATH}" \
+          -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.url')
+          
+         curl -T "build/ios/ipa/kobition_integration.ipa" \
           -H 'content-type: application/octet-stream' \
           -H 'x-amz-tagging: unsaved=true' \
           -X PUT "${APP_URL}"

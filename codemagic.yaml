@@ -11,13 +11,10 @@ workflows:
         XCODE_SCHEME: "Runner"                
         BUNDLE_ID: "com.example.kobitionIntegration"
         APP_STORE_ID: 1111111111 
-        APPPATH: "build/ios/ipa/kobition_integration.ipa"
-        
-
+        APPPATH: "build/ios/ipa/kobition_integration.ipa"      
       flutter: stable
       xcode: latest
       cocoapods: default
-
     triggering:
         events:                       # List the events that trigger builds
           - push
@@ -25,6 +22,9 @@ workflows:
           - tag
         branch_patterns:              # Include or exclude watched branches
           - pattern: 'release/*'
+            include: true
+            source: true
+          - pattern: 'master'
             include: true
             source: true
     scripts:

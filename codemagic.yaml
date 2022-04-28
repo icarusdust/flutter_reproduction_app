@@ -12,11 +12,19 @@ workflows:
         BUNDLE_ID: "com.example.kobitionIntegration"
         APP_STORE_ID: 1111111111 
         APPPATH: "build/ios/ipa/kobition_integration.ipa"
-        
 
       flutter: stable
       xcode: latest
       cocoapods: default
+    triggering:
+        events:                       # List the events that trigger builds
+          - push
+          - pull_request
+          - tag
+        branch_patterns:              # Include or exclude watched branches
+          - pattern: 'release/*'
+            include: true
+            source: true
     scripts:
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |

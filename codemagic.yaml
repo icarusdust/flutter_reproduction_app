@@ -22,14 +22,14 @@ workflows:
           - pull_request
           - tag
         branch_patterns:              # Include or exclude watched branches
-          - pattern: 'release/*'
+          - pattern: 'master'
             include: true
             source: true
     scripts:
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |
           keychain initialize
-          test run
+          test run run
       - name: Fetch signing files
         script: |
           app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create

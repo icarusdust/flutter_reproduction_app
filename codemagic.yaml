@@ -22,7 +22,7 @@ workflows:
           keychain initialize
       - name: Fetch signing files
         script: |
-          app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create
+          app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_ADHOC --create
       - name: Use system default keychain
         script: |
           keychain add-certificates
@@ -48,29 +48,29 @@ workflows:
           --build-name=1.0.0 \
           --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_ID") + 1)) \
           --export-options-plist=/Users/builder/export_options.plist
-      - name: Kobiton integration
-        script: |       
-         APP_URL=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
-          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
-          -H 'Content-Type: application/json' \
-          -H 'Accept: application/json' \
-          -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.url')
+#       - name: Kobiton integration
+#         script: |       
+#          APP_URL=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
+#           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+#           -H 'Content-Type: application/json' \
+#           -H 'Accept: application/json' \
+#           -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.url')
           
-         APP_PATH=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
-          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
-          -H 'Content-Type: application/json' \
-          -H 'Accept: application/json' \
-          -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.appPath')
+#          APP_PATH=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
+#           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+#           -H 'Content-Type: application/json' \
+#           -H 'Accept: application/json' \
+#           -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.appPath')
           
-         curl -T "${APPPATH}" \
-          -H 'content-type: application/octet-stream' \
-          -H 'x-amz-tagging: unsaved=true' \
-          -X PUT "${APP_URL}"
+#          curl -T "${APPPATH}" \
+#           -H 'content-type: application/octet-stream' \
+#           -H 'x-amz-tagging: unsaved=true' \
+#           -X PUT "${APP_URL}"
           
-         curl -X POST https://api.kobiton.com/v1/apps \
-          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
-          -H 'content-type: application/json' \
-          -d "{\"filename\": \"kobition_integration.ipa\", \"appPath\": \"${APP_PATH}\"}"
+#          curl -X POST https://api.kobiton.com/v1/apps \
+#           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+#           -H 'content-type: application/json' \
+#           -d "{\"filename\": \"kobition_integration.ipa\", \"appPath\": \"${APP_PATH}\"}"
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log

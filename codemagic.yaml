@@ -52,6 +52,10 @@ workflows:
           --build-name=1.0.0 \
           --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_ID") + 1)) \
           --export-options-plist=/Users/builder/export_options.plist
+      - name: Pcloudy
+        script: |
+          curl -X POST -F "file=@/build/ios/ipa/kobition_integration.ipa" -F "source_type=raw" -F "token=93zqy94twt7325vhkg49cbkf" -F "filter=all" https://device.pcloudy.com/api/upload_file
+
 #       - name: Kobiton integration
 #         script: |       
 #          APP_URL=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \

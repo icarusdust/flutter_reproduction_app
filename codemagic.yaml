@@ -14,7 +14,7 @@ workflows:
         APPPATH: "build/ios/ipa/kobition_integration.ipa"
 
       flutter: stable
-      xcode: latest
+      xcode: 13.2.1
       cocoapods: default
     scripts:
 #       - name: Firebase

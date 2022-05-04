@@ -12,6 +12,7 @@ workflows:
         BUNDLE_ID: "com.example.kobitionIntegration"
         APP_STORE_ID: 1111111111 
         APPPATH: "build/ios/ipa/kobition_integration.ipa"
+        APP_KEY: "123"
 
       flutter: stable
       xcode: 13.2.1
@@ -21,6 +22,8 @@ workflows:
 #         script: |
 #           flutter pub add firebase_core
 #           flutter pub add firebase_messaging
+      - name: Test
+        script: echo $APP_KEY
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |
           keychain initialize

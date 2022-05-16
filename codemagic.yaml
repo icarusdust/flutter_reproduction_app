@@ -14,7 +14,7 @@ workflows:
         APPPATH: "build/ios/ipa/kobition_integration.ipa"
         APP_KEY: "123"
 
-      flutter: 3.0.0
+      flutter: stable
       xcode: latest
       cocoapods: default
     scripts:

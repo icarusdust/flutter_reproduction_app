@@ -1,16 +1,8 @@
 [
     {
-        "language": "en-US",
+        "language": "da-DK",
         "text": "Minor bug fixes.",
         "whatsNew": "Minor bug fixes.",
-        "description": "\"_APPNAME_\" er en app til dig, som har sat din bolig til salg, er ved at købe bolig eller søger en bolig igennem _BUSINESSNAME_.\\n\\nMed _APPNAME_ kan du nemt komme i kontakt med din ejendomsmægler, uanset om du er ved at købe eller sælge en ejendom. Du kan se relevante dokumenter vedr. de ejendomme, du er interesseret i at købe og du kan signere dokumenter direkte i app'en.\\n\\nHvis du har din ejendom til salg hos _BUSINESSNAME_ kan du med _APPNAME_ følge med i dit boligsalg. Du kan f.eks. få tilbagemeldinger fra fremvisninger af din bolig, læse og besvare beskeder fra ejendomsmægleren og se hvor mange, der klikker sig ind på din bolig. Du kan se ejendommens dokumenter og billeder og du kan signere dokumenter vedr. din bolighandel direkte i app'en.\\n\\nEr du på udkig efter en bolig, hjælper app’en dig med at finde dit boligmatch. Du kan oprette en præcis søgeprofil, helt ned til gadeniveau, og så sørger vi for, at finde boliger, som matcher dine ønsker. Så snart vi har en bolig, der matcher dine ønsker, sender vi dig en notifikation, så du hele tiden er opdateret.\\n\\nVi glæder os til at byde dig velkommen hos _BUSINESSNAME_.",
-        "keywords": "_APPNAME_,_BUSINESSNAME_,bolig,leje,boligsalg,hus,hussalg,mægler,boliga",
-        "support_url": "_SUPPORTURL_"
-    },
-    {
-        "language": "da-DK",
-        "text": "Mindre rettelser.",
-        "whatsNew": "Mindre rettelser.",
         "description": "\"_APPNAME_\" er en app til dig, som har sat din bolig til salg, er ved at købe bolig eller søger en bolig igennem _BUSINESSNAME_.\\n\\nMed _APPNAME_ kan du nemt komme i kontakt med din ejendomsmægler, uanset om du er ved at købe eller sælge en ejendom. Du kan se relevante dokumenter vedr. de ejendomme, du er interesseret i at købe og du kan signere dokumenter direkte i app'en.\\n\\nHvis du har din ejendom til salg hos _BUSINESSNAME_ kan du med _APPNAME_ følge med i dit boligsalg. Du kan f.eks. få tilbagemeldinger fra fremvisninger af din bolig, læse og besvare beskeder fra ejendomsmægleren og se hvor mange, der klikker sig ind på din bolig. Du kan se ejendommens dokumenter og billeder og du kan signere dokumenter vedr. din bolighandel direkte i app'en.\\n\\nEr du på udkig efter en bolig, hjælper app’en dig med at finde dit boligmatch. Du kan oprette en præcis søgeprofil, helt ned til gadeniveau, og så sørger vi for, at finde boliger, som matcher dine ønsker. Så snart vi har en bolig, der matcher dine ønsker, sender vi dig en notifikation, så du hele tiden er opdateret.\\n\\nVi glæder os til at byde dig velkommen hos _BUSINESSNAME_.",
         "keywords": "_APPNAME_,_BUSINESSNAME_,bolig,leje,boligsalg,hus,hussalg,mægler,boliga",
         "support_url": "_SUPPORTURL_"

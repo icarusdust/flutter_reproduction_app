@@ -10,9 +10,9 @@ workflows:
         XCODE_WORKSPACE: "Runner.xcworkspace"
         XCODE_SCHEME: "Runner"                
         BUNDLE_ID: "com.example.kobitionIntegration"
-        APP_STORE_ID: 1111111111 
-        APPPATH: "build/ios/ipa/kobition_integration.ipa"
-        APP_KEY: "123"
+        APP_STORE_ID: "1625065284" 
+#         APPPATH: "build/ios/ipa/kobition_integration.ipa"
+#         APP_KEY: "123"
 
       flutter: 2.10.4
       xcode: latest
@@ -55,9 +55,9 @@ workflows:
           --build-name=1.0.0 \
           --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_ID") + 1)) \
           --export-options-plist=/Users/builder/export_options.plist
-      - name: Pcloudy
-        script: |
-          curl -X POST -F "file=@/build/ios/ipa/kobition_integration.ipa" -F "source_type=raw" -F "token=93zqy94twt7325vhkg49cbkf" -F "filter=all" https://device.pcloudy.com/api/upload_file
+#       - name: Pcloudy
+#         script: |
+#           curl -X POST -F "file=@/build/ios/ipa/kobition_integration.ipa" -F "source_type=raw" -F "token=93zqy94twt7325vhkg49cbkf" -F "filter=all" https://device.pcloudy.com/api/upload_file
 
 #       - name: Kobiton integration
 #         script: |       
@@ -86,3 +86,8 @@ workflows:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
+    publish:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY         
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER       
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID         
+        submit_to_testflight: true  

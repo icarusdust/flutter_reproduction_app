@@ -10,7 +10,7 @@ workflows:
         XCODE_WORKSPACE: "Runner.xcworkspace"
         XCODE_SCHEME: "Runner"                
         BUNDLE_ID: "com.example.kobitionIntegration"
-        APP_STORE_ID: "1625065284" 
+        APP_STORE_ID: 1625065284
 #         APPPATH: "build/ios/ipa/kobition_integration.ipa"
 #         APP_KEY: "123"
 
@@ -52,7 +52,7 @@ workflows:
       - name: Flutter build ipa and automatic versioning
         script: |
           flutter build ipa --release \
-          --build-name=2.0.0 \
+          --build-name=3.0.0 \
           --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_ID") + 1)) \
           --export-options-plist=/Users/builder/export_options.plist
 #       - name: Pcloudy

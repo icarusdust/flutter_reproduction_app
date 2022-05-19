@@ -1,6 +1,18 @@
 [
     {
         "language": "en-US",
-        "text": "Testing submission"
+        "text": "Added new menus",
+        "whatsNew": "Added new menus",
+        "description": "App for the eaters",
+        "keywords": "restaurant",
+        "support_url": "https://codemagic.io/support"
+    },
+    {
+        "language": "en-UK",
+        "text": "Added new menus",
+        "whatsNew": "Added new menus",
+        "description": "App for the eaters",
+        "keywords": "restaurant",
+        "support_url": "https://codemagic.io/support"
     }
 ]

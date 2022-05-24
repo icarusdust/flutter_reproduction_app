@@ -25,7 +25,8 @@ workflows:
       - name: Test
         script: |
             
-            rm -rf ~/Library/Caches/CocoaPods Pods ~/Library/Developer/Xcode/DerivedData && pod deintegrate && pod install && pod repo update
+            rm -rf ~/Library/Caches/CocoaPods Pods ~/Library/Developer/Xcode/DerivedData && pod deintegrate && pod install 
+            cd ios && pod repo update
             
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |

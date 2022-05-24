@@ -24,9 +24,9 @@ workflows:
 #           flutter pub add firebase_messaging
       - name: Test
         script: |
+            
+            rm -rf ~/Library/Caches/CocoaPods Pods ~/Library/Developer/Xcode/DerivedData && pod deintegrate && pod install
             cd ios && pod repo update
-            rm -rf Podfile.lock
-            pod install
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |
           keychain initialize

@@ -23,7 +23,10 @@ workflows:
 #           flutter pub add firebase_core
 #           flutter pub add firebase_messaging
       - name: Test
-        script: echo "The app key is = $APP_KEY"
+        script: |
+            cd ios && pod repo update
+            rm -rf Podfile.lock
+            pod install
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |
           keychain initialize

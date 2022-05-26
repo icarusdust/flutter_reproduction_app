@@ -16,6 +16,7 @@ workflows:
 
       flutter: 2.10.4
       xcode: latest
+      ruby: 2.5.2
       cocoapods: default
     scripts:
 #       - name: Firebase

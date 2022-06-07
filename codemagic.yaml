@@ -14,21 +14,15 @@ workflows:
 #         APPPATH: "build/ios/ipa/kobition_integration.ipa"
 #         APP_KEY: "123"
 
-      flutter: 2.10.4
+      flutter: stable
       xcode: latest
-      ruby: 2.5.2
       cocoapods: default
     scripts:
 #       - name: Firebase
 #         script: |
 #           flutter pub add firebase_core
 #           flutter pub add firebase_messaging
-      - name: Test
-        script: |
-            #!/bin/sh
-            rm -f $CM_BUILD_DIR/ios/Podfile.lock
-            cd ios && pod repo update
-            flutter run
+
     
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |

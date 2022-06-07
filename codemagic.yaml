@@ -51,9 +51,7 @@ workflows:
       - name: Integration tests
         script: |
           mkdir -p test-results
-          flutter -d iPhone test --machine > test-results/flutter.json integration_test # for iOS use: -d iPhone      
-    test_report: test-results/flutter.json
-        ignore_failure: true          
+          flutter -d iPhone test --machine > test-results/flutter.json integration_test # for iOS use: -d iPhone                
       - name: Install pods
         script: |
           find . -name "Podfile" -execdir pod install \;

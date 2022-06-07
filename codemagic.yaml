@@ -48,9 +48,11 @@ workflows:
       - name: Flutter analyze
         script: |
           cd . && flutter analyze
-      - name: Flutter unit tests
+      - name: Integration tests
         script: |
-          cd . && flutter test
+          mkdir -p test-results
+          flutter -d iPhone test --machine > test-results/flutter.json integration_test # for iOS use: -d iPhone      
+    test_report: test-results/flutter.json
         ignore_failure: true          
       - name: Install pods
         script: |

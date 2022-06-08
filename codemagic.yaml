@@ -38,15 +38,7 @@ workflows:
           xcode-project use-profiles
       - name: Get Flutter packages
         script: |
-          cd . && flutter packages pub get
-      - name: Flutter analyze
-        script: |
-          cd . && flutter analyze
-      - name: Integration tests
-        script: |
-          mkdir -p test-results
-          flutter emulators --launch iPhone 11
-          flutter -d iPhone 11 test --machine > test-results/flutter.json integration_test # for iOS use: -d iPhone                
+          cd . && flutter packages pub get         
       - name: Install pods
         script: |
           find . -name "Podfile" -execdir pod install \;

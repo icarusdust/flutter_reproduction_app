@@ -15,7 +15,7 @@ workflows:
 #         APP_KEY: "123"
 
       flutter: stable
-      xcode: latest
+      xcode: 13.4.1
       cocoapods: default
     scripts:
 #       - name: Firebase

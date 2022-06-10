@@ -42,6 +42,15 @@ workflows:
       - name: Install pods
         script: |
           find . -name "Podfile" -execdir pod install \;
+          
+      - name: Flutter Integration Tests iOS
+        script: |
+          mkdir -p test-results-ios
+          flutter emulators --launch apple_ios_simulator
+          flutter -d iPad-Pro test --machine > test-results-ios/flutter.json integration_test
+          flutter -d 99B14BF4-7966-4427-ACD1-34BFE4D26A01 test --machine > test-results-ios/flutter.json integration_test
+        test_report: test-results-ios/flutter.json
+        ignore_failure: true
       - name: Flutter build ipa and automatic versioning
         script: |
           flutter build ipa --release \
@@ -86,3 +95,55 @@ workflows:
 #         issuer_id: $APP_STORE_CONNECT_ISSUER_ID         
 #         submit_to_app_store: true 
 #         release_type: AFTER_APPROVAL
+
+
+
+
+
+
+# workflows:
+#   android-workflow:
+#     name: Android Workflow
+#     max_build_duration: 120
+#     instance_type: mac_mini
+#     environment:
+#       groups:
+#         - keystore_credentials
+#       flutter: 2.8.1
+#       xcode: latest
+#       cocoapods: default
+#     scripts:
+#       - name: Set up key properties
+#         script: |
+#           echo $ANDROID_FIREBASE_SECRET > $FCI_BUILD_DIR/android/app/google-services.json
+#           echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore
+#           # The following script creates key.properties file and stores the credentials in it. As we configure code signing in app/build.gradle file, the following part is unnecessary unless code signing is configured differently as explained in the documentation: https://docs.codemagic.io/flutter-code-signing/android-code-signing/
+#           cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
+#           storePassword=$FCI_KEYSTORE_PASSWORD
+#           keyPassword=$FCI_KEY_PASSWORD
+#           keyAlias=$FCI_KEY_ALIAS
+#           storeFile=/tmp/keystore.keystore
+#           EOF
+#       - name: Set up local.properties
+#         script: |
+#           echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+#       - name: Get Flutter packages
+#         script: |
+#           cd . && flutter packages pub get
+#       - name: Flutter Integration Tests iOS
+#         script: |
+#           mkdir -p test-results-ios
+#           flutter devices
+#           xcrun simctl list
+#           flutter emulators --launch apple_ios_simulator
+#           flutter -d iPad-Pro test --machine > test-results-ios/flutter.json integration_test
+#           flutter -d 99B14BF4-7966-4427-ACD1-34BFE4D26A01 test --machine > test-results-ios/flutter.json integration_test
+#           flutter devices
+#         test_report: test-results-ios/flutter.json
+#         ignore_failure: true
+  
+#     artifacts:
+#       - build/**/outputs/**/*.apk
+#       - build/**/outputs/**/mapping.txt
+#       - flutter_drive.log
+#       - test-results-ios/*.json

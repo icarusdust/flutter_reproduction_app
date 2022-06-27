@@ -1,3 +1,18 @@
+scripts:
+    - &test       # Defined section
+      name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+      script:  keychain initialize
+      name: Fetch signing files
+      script: app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create
+      name: Use system default keychain
+      script: keychain add-certificates
+      name: Set up code signing settings on Xcode project
+      script: xcode-project use-profiles
+      name: Get Flutter packages
+      script: cd . && flutter packages pub get         
+      name: Install pods
+      script: find . -name "Podfile" -execdir pod install \;
+
 workflows:
   ios-workflow:
     name: iOS Workflow
@@ -24,24 +39,25 @@ workflows:
 #           flutter pub add firebase_messaging
 
     
-      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-        script: |
-          keychain initialize
-      - name: Fetch signing files
-        script: |
-          app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create
-      - name: Use system default keychain
-        script: |
-          keychain add-certificates
-      - name: Set up code signing settings on Xcode project
-        script: |
-          xcode-project use-profiles
-      - name: Get Flutter packages
-        script: |
-          cd . && flutter packages pub get         
-      - name: Install pods
-        script: |
-          find . -name "Podfile" -execdir pod install \;
+#       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+#         script: |
+#           keychain initialize
+#       - name: Fetch signing files
+#         script: |
+#           app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create
+#       - name: Use system default keychain
+#         script: |
+#           keychain add-certificates
+#       - name: Set up code signing settings on Xcode project
+#         script: |
+#           xcode-project use-profiles
+#       - name: Get Flutter packages
+#         script: |
+#           cd . && flutter packages pub get         
+#       - name: Install pods
+#         script: |
+#           find . -name "Podfile" -execdir pod install \;
+      *test
           
 #       - name: Flutter Integration Tests iOS
 #         script: |

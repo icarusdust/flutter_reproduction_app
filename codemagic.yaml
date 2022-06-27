@@ -1,13 +1,17 @@
 scripts:
-    - &build_ios       # Defined section
-#       name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-#       script:  keychain initialize
-#       name: Fetch signing files
-#       script: app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create
-#       name: Use system default keychain
-#       script: keychain add-certificates
-    - name: Set up code signing settings on Xcode project
-      script: xcode-project use-profiles
+  - &codesign #Reuse codesigning script
+    name: Set up keychain to be used for code signing using Codemagic CLI 'keychain' command
+    script: keychain initialize
+    name: Fetch signing files
+    script: |
+      # You can allow creating resources if existing are not found with `--create` flag
+      app-store-connect fetch-signing-files "com.onsitemanagementapp.oma" \
+        --type IOS_APP_STORE \
+        --create
+  - name: Set up signing certificate
+    script: keychain add-certificates
+  - name: Set up code signing settings on Xcode project
+    script: xcode-project use-profiles
 #       name: Get Flutter packages
 #       script: cd . && flutter packages pub get         
 #       name: Install pods
@@ -54,7 +58,7 @@ workflows:
       - name: Use system default keychain
         script: |
           keychain add-certificates
-      - *build_ios
+      - *codesign
 #       - name: Set up code signing settings on Xcode project
 #         script: |
 #           xcode-project use-profiles

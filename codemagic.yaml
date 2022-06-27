@@ -178,6 +178,7 @@
 workflows:
   iOS-workflow:
     name: iOS Workflow
+    instance_type: mac_pro
     environment:
       flutter: stable
       xcode: latest

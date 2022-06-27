@@ -57,7 +57,7 @@ workflows:
 #       - name: Install pods
 #         script: |
 #           find . -name "Podfile" -execdir pod install \;
-      *test
+      - *test
           
 #       - name: Flutter Integration Tests iOS
 #         script: |

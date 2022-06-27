@@ -39,7 +39,7 @@ workflows:
       xcode: edge
       cocoapods: default
     scripts:
-      - *test
+      - *build_ios
 #       - name: Firebase
 #         script: |
 #           flutter pub add firebase_core

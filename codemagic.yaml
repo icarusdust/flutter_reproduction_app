@@ -111,11 +111,11 @@
 #           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
 #           -H 'content-type: application/json' \
 #           -d "{\"filename\": \"kobition_integration.ipa\", \"appPath\": \"${APP_PATH}\"}"
-    artifacts:
-      - build/ios/ipa/*.ipa
-      - /tmp/xcodebuild_logs/*.log
-      - flutter_drive.log
-#     publishing:
+#     artifacts:
+#       - build/ios/ipa/*.ipa
+#       - /tmp/xcodebuild_logs/*.log
+#       - flutter_drive.log
+# #     publishing:
 #       app_store_connect:
 #         api_key: $APP_STORE_CONNECT_PRIVATE_KEY         
 #         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER       

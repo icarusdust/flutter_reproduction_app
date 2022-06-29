@@ -175,21 +175,3 @@
 #       - flutter_drive.log
 #       - test-results-ios/*.json
 
-workflows:
-  iOS-workflow:
-    name: iOS Workflow
-    instance_type: mac_pro
-    environment:
-      flutter: stable
-      xcode: latest
-      cocoapods: default
-    scripts:
-      - name: Get Flutter packages
-        script: |
-          cd . && flutter packages pub get
-      - name: Install pods
-        script: |
-          find . -name "Podfile" -execdir pod install \;
-      - name: Flutter build
-        script: |
-          flutter build ios --debug --no-codesign

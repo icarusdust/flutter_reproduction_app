@@ -23,67 +23,77 @@
 # #           --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_ID") + 1)) \
 # #           --export-options-plist=/Users/builder/export_options.plist
 
-# workflows:
-#   ios-workflow:
-#     name: iOS Workflow
-#     instance_type: mac_pro
-#     max_build_duration: 120
-#     environment:
-#       groups:
-#         - appstore_credentials
-#       vars:
-#         XCODE_WORKSPACE: "Runner.xcworkspace"
-#         XCODE_SCHEME: "Runner"                
-#         BUNDLE_ID: "com.example.kobitionIntegration"
-#         APP_STORE_ID: 1625065284
-# #         APPPATH: "build/ios/ipa/kobition_integration.ipa"
-# #         APP_KEY: "123"
+# definitions:
+#   environment:
+#     browserstack_ios_deployment: &browserstack_ios_deployment
+#       groups: browserstack_creds
 
-#       flutter: stable
-#       xcode: edge
-#       cocoapods: default
-#     scripts:
-# #       - name: Firebase
-# #         script: |
-# #           flutter pub add firebase_core
-# #           flutter pub add firebase_messaging
+workflows:
+  ios-workflow:
+    name: iOS Workflow
+    instance_type: mac_pro
+    max_build_duration: 120
+    environment:
+      groups:
+        - appstore_credentials
+      vars:
+        XCODE_WORKSPACE: "Runner.xcworkspace"
+        XCODE_SCHEME: "Runner"                
+        BUNDLE_ID: "com.example.kobitionIntegration"
+        APP_STORE_ID: 1625065284
+        CREDS: "nihalagazade_4HCBZ0:d8itfvsxNiZjFV1qsgP5"
+#         APPPATH: "build/ios/ipa/kobition_integration.ipa"
+#         APP_KEY: "123"
+
+      flutter: stable
+      xcode: edge
+      cocoapods: default
+    scripts:
+#       - name: Firebase
+#         script: |
+#           flutter pub add firebase_core
+#           flutter pub add firebase_messaging
 
     
-#       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-#         script: |
-#           keychain initialize
-#       - name: Fetch signing files
-#         script: |
-#           app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create
-#       - name: Use system default keychain
-#         script: |
-#           keychain add-certificates
+      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+        script: |
+          keychain initialize
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_STORE --create
+      - name: Use system default keychain
+        script: |
+          keychain add-certificates
 #       - *codesign
-# #       - name: Set up code signing settings on Xcode project
-# #         script: |
-# #           xcode-project use-profiles
-#       - name: Get Flutter packages
-#         script: |
-#           cd . && flutter packages pub get         
-#       - name: Install pods
-#         script: |
-#           find . -name "Podfile" -execdir pod install \;
+      - name: Set up code signing settings on Xcode project
+        script: |
+          xcode-project use-profiles
+      - name: Get Flutter packages
+        script: |
+          cd . && flutter packages pub get         
+      - name: Install pods
+        script: |
+          find . -name "Podfile" -execdir pod install \;
      
           
-# #       - name: Flutter Integration Tests iOS
-# #         script: |
-# #           mkdir -p test-results-ios
-# #           flutter emulators --launch apple_ios_simulator
-# #           flutter -d iPad-Pro test --machine > test-results-ios/flutter.json integration_test
-# #           flutter -d 99B14BF4-7966-4427-ACD1-34BFE4D26A01 test --machine > test-results-ios/flutter.json integration_test
-# #         test_report: test-results-ios/flutter.json
-# #         ignore_failure: true
-#       - name: Flutter build ipa and automatic versioning
+#       - name: Flutter Integration Tests iOS
 #         script: |
-#           flutter build ipa --release \
-#           --build-name=6.0.0 \
-#           --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_ID") + 1)) \
-#           --export-options-plist=/Users/builder/export_options.plist
+#           mkdir -p test-results-ios
+#           flutter emulators --launch apple_ios_simulator
+#           flutter -d iPad-Pro test --machine > test-results-ios/flutter.json integration_test
+#           flutter -d 99B14BF4-7966-4427-ACD1-34BFE4D26A01 test --machine > test-results-ios/flutter.json integration_test
+#         test_report: test-results-ios/flutter.json
+#         ignore_failure: true
+      - name: Flutter build ipa and automatic versioning
+        script: |
+          flutter build ipa --release \
+          --build-name=6.0.0 \
+          --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_ID") + 1)) \
+          --export-options-plist=/Users/builder/export_options.plist
+      - name: BrowserStack upload
+        script: |      
+              curl -u "$CREDS" -X POST "https://api-cloud.browserstack.com/app-live/upload" -F "file=@android/app/build/outputs/apk/release/app-release.apk"
+
 #       - name: Pcloudy
 #         script: |
 #           curl -X POST -F "file=@/build/ios/ipa/kobition_integration.ipa" -F "source_type=raw" -F "token=93zqy94twt7325vhkg49cbkf" -F "filter=all" https://device.pcloudy.com/api/upload_file
@@ -111,10 +121,10 @@
 #           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
 #           -H 'content-type: application/json' \
 #           -d "{\"filename\": \"kobition_integration.ipa\", \"appPath\": \"${APP_PATH}\"}"
-#     artifacts:
-#       - build/ios/ipa/*.ipa
-#       - /tmp/xcodebuild_logs/*.log
-#       - flutter_drive.log
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - flutter_drive.log
 # #     publishing:
 #       app_store_connect:
 #         api_key: $APP_STORE_CONNECT_PRIVATE_KEY         

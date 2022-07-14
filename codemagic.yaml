@@ -42,24 +42,26 @@ definitions:
     automatic_ios_signing: &automatic_ios_signing
       groups:
         - appstore_credentials
+        - ios
       vars:
         BUNDLE_ID: "com.example.yourapp"
         XCODE_WORKSPACE: "App.xcworspace"
         XCODE_SCHEME: "App"
         XCODE_CONFIG: "Release-dev"
-    browserstack_upload: &browserstack_upload
-      groups:
-         - appstore_credentials
-      vars:
-        TEST: '123'
+#     browserstack_upload: &browserstack_upload
+#       groups:
+#          - appstore_credentials
+#       vars:
+#         TEST: '123'
 
 workflows:
   ios-workflow:
     name: iOS Workflow
     <<: *instance_mac_pro
     environment:
-      <<: *env_versions
-      <<: *automatic_ios_signing  
+    <<: *env_versions
+      groups:
+         <<: *automatic_ios_signing  
       
 #     instance_type: mac_pro
 #     max_build_duration: 120

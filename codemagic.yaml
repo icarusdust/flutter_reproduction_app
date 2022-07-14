@@ -56,7 +56,7 @@ workflows:
     name: iOS Workflow
     <<: *instance_mac_pro
     environment:
-      <<: *&env_versions
+      <<: *env_versions
       <<: *automatic_ios_signing  
       <<: *browserstack_upload
 #     instance_type: mac_pro

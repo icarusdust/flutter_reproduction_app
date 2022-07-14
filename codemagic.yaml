@@ -28,26 +28,52 @@
 #     browserstack_ios_deployment: &browserstack_ios_deployment
 #       groups: browserstack_creds
 
-workflows:
-  ios-workflow:
-    name: iOS Workflow
+
+
+definitions:
+  environment:
     instance_type: mac_pro
     max_build_duration: 120
-    environment:
+    flutter: stable
+    xcode: latest
+    cocoapods: default
+    automatic_ios_signing: &automatic_ios_signing
       groups:
         - appstore_credentials
       vars:
-        XCODE_WORKSPACE: "Runner.xcworkspace"
-        XCODE_SCHEME: "Runner"                
-        BUNDLE_ID: "com.example.kobitionIntegration"
-        APP_STORE_ID: 1625065284
+        BUNDLE_ID: "com.example.yourapp"
+        XCODE_WORKSPACE: "App.xcworspace"
+        XCODE_SCHEME: "App"
+        XCODE_CONFIG: "Release-dev"
+    browserstack_upload: &browserstack_upload
+      groups:
+         - appstore_credentials
+       vars:
+        TESTING:'1234'
 
-#         APPPATH: "build/ios/ipa/kobition_integration.ipa"
-#         APP_KEY: "123"
+workflows:
+  ios-workflow:
+    name: iOS Workflow
+    environment:
+      <<: *automatic_ios_signing
+      <<: *browserstack_upload
+#     instance_type: mac_pro
+#     max_build_duration: 120
+#     environment:
+#       groups:
+#         - appstore_credentials
+#       vars:
+#         XCODE_WORKSPACE: "Runner.xcworkspace"
+#         XCODE_SCHEME: "Runner"                
+#         BUNDLE_ID: "com.example.kobitionIntegration"
+#         APP_STORE_ID: 1625065284
 
-      flutter: stable
-      xcode: edge
-      cocoapods: default
+# #         APPPATH: "build/ios/ipa/kobition_integration.ipa"
+# #         APP_KEY: "123"
+
+#       flutter: stable
+#       xcode: edge
+#       cocoapods: default
     scripts:
 #       - name: Firebase
 #         script: |
@@ -93,6 +119,7 @@ workflows:
       - name: BrowserStack upload
         script: |      
               curl -u "$CREDS" -X POST "https://api-cloud.browserstack.com/app-live/upload" -F "file=@build/ios/ipa/kobition_integration.ipa"
+              echo $TESTING
 
 #       - name: Pcloudy
 #         script: |

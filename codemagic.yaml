@@ -44,7 +44,7 @@ definitions:
         - appstore_credentials
         - ios
       vars:
-        BUNDLE_ID: "com.example.yourapp"
+        BUNDLE_ID: "com.example.kobitionIntegration"
         XCODE_WORKSPACE: "App.xcworspace"
         XCODE_SCHEME: "App"
         XCODE_CONFIG: "Release-dev"

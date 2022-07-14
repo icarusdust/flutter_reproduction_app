@@ -41,7 +41,7 @@ definitions:
   environment:
     automatic_ios_signing: &automatic_ios_signing
       groups:
-        - appstore_credentials
+        - ios
       vars:
         BUNDLE_ID: "com.example.yourapp"
         XCODE_WORKSPACE: "App.xcworspace"
@@ -50,6 +50,8 @@ definitions:
     browserstack_upload: &browserstack_upload
       groups:
          - appstore_credentials
+      vars:
+        TEST: '123'
 
 workflows:
   ios-workflow:
@@ -121,7 +123,7 @@ workflows:
       - name: BrowserStack upload
         script: |      
               curl -u "$CREDS" -X POST "https://api-cloud.browserstack.com/app-live/upload" -F "file=@build/ios/ipa/kobition_integration.ipa"
-              echo $TESTING
+              echo $TEST
 
 #       - name: Pcloudy
 #         script: |

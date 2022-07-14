@@ -47,11 +47,11 @@ definitions:
         XCODE_WORKSPACE: "App.xcworspace"
         XCODE_SCHEME: "App"
         XCODE_CONFIG: "Release-dev"
-#     browserstack_upload: &browserstack_upload
-#       groups:
-#          - appstore_credentials
-#       vars:
-#         TEST: '123'
+    browserstack_upload: &browserstack_upload
+      groups:
+         - appstore_credentials
+      vars:
+        TEST: '123'
 
 workflows:
   ios-workflow:
@@ -60,7 +60,7 @@ workflows:
     environment:
       <<: *env_versions
       <<: *automatic_ios_signing  
-#       <<: *browserstack_upload
+      <<: *browserstack_upload
 #     instance_type: mac_pro
 #     max_build_duration: 120
 #     environment:

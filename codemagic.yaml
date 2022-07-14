@@ -50,16 +50,14 @@ definitions:
     browserstack_upload: &browserstack_upload
       groups:
          - appstore_credentials
-       vars:
-        TESTING:'1234'
 
 workflows:
   ios-workflow:
     name: iOS Workflow
     <<: *instance_mac_pro
     environment:
-      <<: *automatic_ios_signing
       <<: *&env_versions
+      <<: *automatic_ios_signing  
       <<: *browserstack_upload
 #     instance_type: mac_pro
 #     max_build_duration: 120

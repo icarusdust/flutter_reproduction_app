@@ -41,7 +41,7 @@ definitions:
   environment:
     automatic_ios_signing: &automatic_ios_signing
       groups:
-        - ios
+        - appstore_credentials
       vars:
         BUNDLE_ID: "com.example.yourapp"
         XCODE_WORKSPACE: "App.xcworspace"

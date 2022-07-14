@@ -59,9 +59,8 @@ workflows:
     name: iOS Workflow
     <<: *instance_mac_pro
     environment:
-    <<: *env_versions
-      groups:
-         <<: *automatic_ios_signing  
+        <<: *env_versions
+        <<: *automatic_ios_signing  
       
 #     instance_type: mac_pro
 #     max_build_duration: 120

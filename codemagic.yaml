@@ -65,7 +65,9 @@ workflows:
     <<: *instance_mac_pro
     environment:
         <<: *env_versions
-        <<: *automatic_ios_signing  
+        <<: *automatic_ios_signing
+        vars:
+          Test: '123'
       
 #     instance_type: mac_pro
 #     max_build_duration: 120
@@ -95,6 +97,7 @@ workflows:
         script: |
           keychain initialize
           echo $CREDS
+          echo $Test
       - name: Fetch signing files
         script: |
           app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_ADHOC 

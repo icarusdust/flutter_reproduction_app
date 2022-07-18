@@ -66,8 +66,8 @@ workflows:
     environment:
         <<: *env_versions
         <<: *automatic_ios_signing
-        vars:
-          Test: '123'
+#         vars:
+#           Test: '123'
       
 #     instance_type: mac_pro
 #     max_build_duration: 120

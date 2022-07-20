@@ -34,7 +34,7 @@ definitions:
   cool_vars: &cool_vars
     meow: 'testing'
   instance_mac_pro: &instance_mac_pro
-    instance_type: mac_pro
+    instance_type: mac_mini_m1
     max_build_duration: 120
   env_versions: &env_versions
     flutter: stable
@@ -98,6 +98,7 @@ workflows:
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |
           keychain initialize
+          docker --version
           echo $CREDS
           echo $Test
       - name: Fetch signing files

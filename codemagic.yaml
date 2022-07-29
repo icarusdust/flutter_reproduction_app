@@ -119,11 +119,10 @@ workflows:
           find . -name "Podfile" -execdir pod install \;
      
           
-#       - name: Flutter Integration Tests iOS
-#         script: |
-#           flutter emulators --launch apple_ios_simulator
-#           flutter -d iPad-Pro test --machine > test-results-ios/flutter.json integration_test
-#           flutter -d 99B14BF4-7966-4427-ACD1-34BFE4D26A01 test integration_test
+      - name: Flutter Integration Tests iOS
+        script: |
+          flutter emulators --launch apple_ios_simulator
+          flutter test integration_test
 #         test_report: test-results-ios/flutter.json
 #         ignore_failure: true
       - name: Flutter build ipa and automatic versioning

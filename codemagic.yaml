@@ -122,7 +122,7 @@ workflows:
       - name: Flutter Integration Tests iOS
         script: |
           flutter emulators --launch apple_ios_simulator
-          flutter -d iPhone test integration_test
+          flutter -d 0B315533-768E-47B9-AC74-94CDF3FAE84F test integration_test
 #         test_report: test-results-ios/flutter.json
 #         ignore_failure: true
       - name: Flutter build ipa and automatic versioning

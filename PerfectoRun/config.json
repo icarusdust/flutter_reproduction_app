@@ -1,0 +1,33 @@
+{
+      "cloudURL": "web-demo-fra.perfectomobile.com",
+      "securityToken": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzOGY3NGJkZC1iZmZlLTRmZGEtOTViYi04NTYyNDNmMTYyMDQifQ.eyJpYXQiOjE2NTc4NzQ4ODAsImp0aSI6IjY3ZTQyYzI0LTExNzYtNDQ5YS04MmUyLWRiZDUyYWZiNzI3NCIsImlzcyI6Imh0dHBzOi8vYXV0aC5wZXJmZWN0b21vYmlsZS5jb20vYXV0aC9yZWFsbXMvd2ViLWRlbW8tZnJhLXBlcmZlY3RvbW9iaWxlLWNvbSIsImF1ZCI6Imh0dHBzOi8vYXV0aC5wZXJmZWN0b21vYmlsZS5jb20vYXV0aC9yZWFsbXMvd2ViLWRlbW8tZnJhLXBlcmZlY3RvbW9iaWxlLWNvbSIsInN1YiI6IjNkNjgyNjI5LTg5NDUtNGIzZS1hNDE4LWIwYzY3NjY1ODMxZiIsInR5cCI6Ik9mZmxpbmUiLCJhenAiOiJvZmZsaW5lLXRva2VuLWdlbmVyYXRvciIsIm5vbmNlIjoiNzYzN2YxZTYtMWI2Mi00ZWY3LTgxOGYtYWZmNWIxNThlZWVhIiwic2Vzc2lvbl9zdGF0ZSI6IjM2ZDc2MGFkLTJjMDMtNDY1ZS04NGE4LTgwYWMyZjkxOTg3ZiIsInNjb3BlIjoib3BlbmlkIG9mZmxpbmVfYWNjZXNzIn0.atYQMvjniag4ESTdTQWzN7QGvtPUgAPORG9ty5220qE",
+      "devices": [
+       
+            {
+              "platformName" : "Android",
+              "platformVersion": "^12.*",
+              "description":"free"
+            },
+            {
+                "platformName_" : "Android",
+                "platformVersion_": "^11.*",
+                "description":"free"
+            }
+      ],
+      "jobName": "some_job",
+      "jobNumber": 1,
+      "branch": "some_branch",
+      "projectName": "My_Flutter_project",
+      "projectVersion": "v1.0",
+      "tags": [
+        "espresso", "plugin"  ],
+      "apkPath": "/build/app/outputs/flutter-apk/app-release.apk",
+      "testApkPath": "/build/app/outputs/flutter-apk/app-release-androidTest.apk",
+      "installationDetails" : {"preCleanUp" : "true"},
+      "postExecution" : {"uninstall" : "false" },
+      "debug": false,
+      "failBuildOnFailure": false,
+      "takeScreenshotOnTestFailure": true,
+      "shard": false,
+      "testTimeout" : 60000
+    }

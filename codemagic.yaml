@@ -34,17 +34,17 @@ definitions:
   cool_vars: &cool_vars
     meow: 'testing'
   instance_mac_pro: &instance_mac_pro
-    instance_type: mac_mini_m1
+    instance_type: mac_pro
     max_build_duration: 120
   env_versions: &env_versions
     flutter: stable
     xcode: latest
     cocoapods: default
-  triggering:
-    events:
-      - tag
-    tag_patterns:
-      - pattern: 'v1.2'
+#   triggering:
+#     events:
+#       - tag
+#     tag_patterns:
+#       - pattern: 'v1.2'
   environment:
     automatic_ios_signing: &automatic_ios_signing
       groups:
@@ -119,21 +119,21 @@ workflows:
           find . -name "Podfile" -execdir pod install \;
      
           
-      - name: Flutter Integration Tests iOS
-        script: |
-           flutter emulators --launch apple_ios_simulator
-           xcrun simctl boot 0B315533-768E-47B9-AC74-94CDF3FAE84F
-           flutter -d 0B315533-768E-47B9-AC74-94CDF3FAE84F test integration_test
+#       - name: Flutter Integration Tests iOS
+#         script: |
+#            flutter emulators --launch apple_ios_simulator
+#            xcrun simctl boot 0B315533-768E-47B9-AC74-94CDF3FAE84F
+#            flutter -d 0B315533-768E-47B9-AC74-94CDF3FAE84F test integration_test
       - name: Flutter build ipa and automatic versioning
         script: |
           flutter build ipa --release \
           --build-name=6.0.0 \
           --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_ID") + 1)) \
           --export-options-plist=/Users/builder/export_options.plist
-      - name: BrowserStack upload
-        script: |      
-              curl -u "$CREDS" -X POST "https://api-cloud.browserstack.com/app-live/upload" -F "file=@build/ios/ipa/kobition_integration.ipa"
-              echo $TEST
+#       - name: BrowserStack upload
+#         script: |      
+#               curl -u "$CREDS" -X POST "https://api-cloud.browserstack.com/app-live/upload" -F "file=@build/ios/ipa/kobition_integration.ipa"
+#               echo $TEST
 
 #       - name: Pcloudy
 #         script: |

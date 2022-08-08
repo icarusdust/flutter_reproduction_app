@@ -190,9 +190,8 @@ workflows:
           CM_KEYSTORE_PASSWORD: Encrypted(Z0FBQUFBQmcwbDdiZmM5aEJpSlVKUlNUUVRhUVczUnh0M1NaaFJ6NjJTMWhiT2R0VHJMdDBpOUM3aDhsU1l2aUtMNzNvd2Q5YlF1dlBYWmJpUFVYakhsUGhHVC1nSW41bEE9PQ==) # <-- Put your encrypted keystore password here
           CM_KEY_ALIAS_PASSWORD: Encrypted(Z0FBQUFBQmcwbDdiZmM5aEJpSlVKUlNUUVRhUVczUnh0M1NaaFJ6NjJTMWhiT2R0VHJMdDBpOUM3aDhsU1l2aUtMNzNvd2Q5YlF1dlBYWmJpUFVYakhsUGhHVC1nSW41bEE9PQ==) # <-- Put your encrypted keystore alias password here
           CM_KEYSTORE_PATH: /tmp/keystore.keystore
-          CM_KEY_ALIAS_USERNAME: Encrypted(Z0FBQUFBQmcwbDcweUxYUmxxaTVEeFhxY0hTQWVteUlTMWhiNzVpazlERUFNR1g5akMxLTA4NjVKaXJ2dEdVdDhDRVV5WlNqa25kTW1raDJuYlRiT2o2YW1qTmpMWDc4akE9PQ==) # <-- Put your encrypted keystore alias username here 
-   
-     flutter: 2.8.1
+          CM_KEY_ALIAS_USERNAME: Encrypted(Z0FBQUFBQmcwbDcweUxYUmxxaTVEeFhxY0hTQWVteUlTMWhiNzVpazlERUFNR1g5akMxLTA4NjVKaXJ2dEdVdDhDRVV5WlNqa25kTW1raDJuYlRiT2o2YW1qTmpMWDc4akE9PQ==) # <-- Put your encrypted keystore alias username here   
+      flutter: 2.8.1
       xcode: latest
       cocoapods: default
    triggering:

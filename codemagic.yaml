@@ -194,7 +194,7 @@ workflows:
       flutter: 2.8.1
       xcode: latest
       cocoapods: default
-   triggering:
+    triggering:
       events:
         - push
       branch_patterns:

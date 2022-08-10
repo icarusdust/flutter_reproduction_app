@@ -68,8 +68,6 @@ workflows:
     environment:
         <<: *env_versions
         <<: *automatic_ios_signing
-        vars:
-           <<: *cool_vars
         flutter: stable
         xcode: edge
         cocoapods: default

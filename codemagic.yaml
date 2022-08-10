@@ -55,11 +55,11 @@ definitions:
         XCODE_WORKSPACE: "App.xcworspace"
         XCODE_SCHEME: "App"
         XCODE_CONFIG: "Release-dev"
-    browserstack_upload: &browserstack_upload
-      groups:
-         - appstore_credentials
-      vars:
-        TEST: '123'
+#     browserstack_upload: &browserstack_upload
+#       groups:
+#          - appstore_credentials
+#       vars:
+#         TEST: '123'
 
 workflows:
   ios-workflow:
@@ -73,14 +73,14 @@ workflows:
       
     instance_type: mac_pro
     max_build_duration: 120
-    environment:
-      groups:
-        - appstore_credentials
-      vars:
-        XCODE_WORKSPACE: "Runner.xcworkspace"
-        XCODE_SCHEME: "Runner"                
-        BUNDLE_ID: "com.example.kobitionIntegration"
-        APP_STORE_ID: 1625065284
+#     environment:
+#       groups:
+#         - appstore_credentials
+#       vars:
+#         XCODE_WORKSPACE: "Runner.xcworkspace"
+#         XCODE_SCHEME: "Runner"                
+#         BUNDLE_ID: "com.example.kobitionIntegration"
+#         APP_STORE_ID: 1625065284
 
 #         APPPATH: "build/ios/ipa/kobition_integration.ipa"
 #         APP_KEY: "123"

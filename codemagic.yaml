@@ -70,24 +70,9 @@ workflows:
         <<: *automatic_ios_signing
         vars:
            <<: *cool_vars
-      
-    instance_type: mac_pro
-    max_build_duration: 120
-#     environment:
-#       groups:
-#         - appstore_credentials
-#       vars:
-#         XCODE_WORKSPACE: "Runner.xcworkspace"
-#         XCODE_SCHEME: "Runner"                
-#         BUNDLE_ID: "com.example.kobitionIntegration"
-#         APP_STORE_ID: 1625065284
-
-#         APPPATH: "build/ios/ipa/kobition_integration.ipa"
-#         APP_KEY: "123"
-
-      flutter: stable
-      xcode: edge
-      cocoapods: default
+        flutter: stable
+        xcode: edge
+        cocoapods: default
     scripts:
       - name: Firebase
         script: |

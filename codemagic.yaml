@@ -177,9 +177,8 @@ workflows:
           CM_KEYSTORE_PATH: /tmp/keystore.keystore
           CM_KEY_ALIAS_USERNAME: Encrypted(Z0FBQUFBQmcwbDcweUxYUmxxaTVEeFhxY0hTQWVteUlTMWhiNzVpazlERUFNR1g5akMxLTA4NjVKaXJ2dEdVdDhDRVV5WlNqa25kTW1raDJuYlRiT2o2YW1qTmpMWDc4akE9PQ==) # <-- Put your encrypted keystore alias username here   
       flutter: 1.22.6
-      xcode: latest
+      xcode: 12.0
       ndk: r22b
-      java: 1.8
       cocoapods: default
     triggering:
       events:

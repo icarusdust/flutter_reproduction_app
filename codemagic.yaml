@@ -61,7 +61,7 @@ definitions:
 #          - appstore_credentials
 #       vars:
 #         TEST: '123'
-# test
+
 
 workflows:
   ios-workflow:

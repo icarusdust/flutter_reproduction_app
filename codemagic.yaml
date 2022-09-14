@@ -228,6 +228,7 @@
 #       - test-results-ios/*.json
 
 workflows:
+  instance_type: mac_pro
   launch-emulator:
     scripts:
       - name: Launch and Setup Emulator

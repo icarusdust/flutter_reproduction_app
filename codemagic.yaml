@@ -73,6 +73,12 @@ workflows:
         flutter: stable
         xcode: edge
         cocoapods: default
+    triggering:
+      events:                   
+        - tag
+      tag_patterns:                
+        - pattern: 'v*.*.*\+*-production'
+          include: true
     scripts:
 #       - name: Firebase
 #         script: |

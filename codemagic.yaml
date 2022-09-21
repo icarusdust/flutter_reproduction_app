@@ -77,7 +77,7 @@ workflows:
       events:                   
         - tag
       tag_patterns:                
-        - pattern: 'v*.*.*+*-production'
+        - pattern: 'v*.*.*+*-productionn'
                    
           include: true
     scripts:

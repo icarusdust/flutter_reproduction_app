@@ -77,7 +77,8 @@ workflows:
       events:                   
         - tag
       tag_patterns:                
-        - pattern: '*'
+        - pattern: 'v*.*.*+*-production'
+                   
           include: true
     scripts:
 #       - name: Firebase

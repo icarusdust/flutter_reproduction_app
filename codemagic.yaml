@@ -56,11 +56,11 @@ definitions:
         XCODE_WORKSPACE: "App.xcworspace"
         XCODE_SCHEME: "App"
         XCODE_CONFIG: "Release-dev"
-#     browserstack_upload: &browserstack_upload
-#       groups:
-#          - appstore_credentials
-#       vars:
-#         TEST: '123'
+    browserstack_upload: &browserstack_upload
+      groups:
+         - appstore_credentials
+      vars:
+        TEST: '123'
 
 
 workflows:

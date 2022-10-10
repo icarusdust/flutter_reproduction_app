@@ -164,7 +164,7 @@ workflows:
 
 
          - name: Set the app URL and PATH
-              script: | 
+           script: | 
                 CURL_RESULT=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \ 
                   -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4) \ 
                   -H 'Content-Type: application/json' \ 
@@ -179,7 +179,7 @@ workflows:
                   -H 'x-amz-tagging: unsaved=true' \
                   -T "build/ios/ipa/kobition_integration.ipa"
             - name: Upload to Kobiton
-              scripts: | 
+              script: | 
                 curl -X POST https://api.kobiton.com/v1/apps \
                   -H 'Authorization:  Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
                   -H 'Content-Type: application/json' \

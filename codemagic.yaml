@@ -126,31 +126,31 @@ workflows:
 #               echo $TEST
 
     
-#       - name: Kobiton integration
-#         script: |       
-#          APP_URL=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
-#           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
-#           -H 'Content-Type: application/json' \
-#           -H 'Accept: application/json' \
-#           -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.url')
+      - name: Kobiton integration
+        script: |       
+         APP_URL=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
+          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+          -H 'Content-Type: application/json' \
+          -H 'Accept: application/json' \
+          -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.url')
           
-#          APP_PATH=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
-#           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
-#           -H 'Content-Type: application/json' \
-#           -H 'Accept: application/json' \
-#           -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.appPath')
+         APP_PATH=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
+          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+          -H 'Content-Type: application/json' \
+          -H 'Accept: application/json' \
+          -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.appPath')
           
-#          curl -T "${APPPATH}" \
-#           -H 'content-type: application/octet-stream' \
-#           -H 'x-amz-tagging: unsaved=true' \
-#           -X PUT "${APP_URL}"
+         curl -T "${APPPATH}" \
+          -H 'content-type: application/octet-stream' \
+          -H 'x-amz-tagging: unsaved=true' \
+          -X PUT "${APP_URL}"
           
-#          curl -X POST https://api.kobiton.com/v1/apps \
-#           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
-#           -H 'content-type: application/json' \
-#           -d "{\"filename\": \"kobition_integration.ipa\", \"appPath\": \"${APP_PATH}\"}"  - name: Pcloudy
-#         script: |
-#           curl -X POST -F "file=@/build/ios/ipa/kobition_integration.ipa" -F "source_type=raw" -F "token=93zqy94twt7325vhkg49cbkf" -F "filter=all" https://device.pcloudy.com/api/upload_file
+         curl -X POST https://api.kobiton.com/v1/apps \
+          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+          -H 'content-type: application/json' \
+          -d "{\"filename\": \"kobition_integration.ipa\", \"appPath\": \"${APP_PATH}\"}"  - name: Pcloudy
+        script: |
+          curl -X POST -F "file=@/build/ios/ipa/kobition_integration.ipa" -F "source_type=raw" -F "token=93zqy94twt7325vhkg49cbkf" -F "filter=all" https://device.pcloudy.com/api/upload_file
 
     artifacts:
       - build/ios/ipa/*.ipa

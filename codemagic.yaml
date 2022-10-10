@@ -120,6 +120,28 @@ workflows:
         script: |
           flutter build ipa --release \
           --export-options-plist=/Users/builder/export_options.plist
+      - name: Set the app URL and PATH
+        script: | 
+              CURL_RESULT=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \ 
+                -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4) \ 
+                -H 'Content-Type: application/json' \ 
+                -d '{"filename": "kobiton_integration.ipa"}' | jq -r)
+
+              APP_URL=$(jq -r '.url' <<<"$CURL_RESULT")
+              APP_PATH=$(jq -r '.appPath' <<<"$CURL_RESULT") 
+      - name: Upload artifacts to AWS
+        script: | 
+          curl -X PUT “$APP_URL” \
+            -H 'content-type: application/octet-stream' \
+            -H 'x-amz-tagging: unsaved=true' \
+            -T "build/ios/ipa/kobition_integration.ipa"
+      - name: Upload to Kobiton
+        script: | 
+          curl -X POST https://api.kobiton.com/v1/apps \
+            -H 'Authorization:  Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+            -H 'Content-Type: application/json' \
+            -H 'Accept: application/json' \
+            -d '{"appPath": “’”$APP_PATH”’”}’
 # #       - name: BrowserStack upload
 #         script: |      
 #               curl -u "$CREDS" -X POST "https://api-cloud.browserstack.com/app-live/upload" -F "file=@build/ios/ipa/kobition_integration.ipa"
@@ -163,28 +185,7 @@ workflows:
 
 
 
-            - name: Set the app URL and PATH
-              script: | 
-                    CURL_RESULT=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \ 
-                      -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4) \ 
-                      -H 'Content-Type: application/json' \ 
-                      -d '{"filename": "kobiton_integration.ipa"}' | jq -r)
-
-                    APP_URL=$(jq -r '.url' <<<"$CURL_RESULT")
-                    APP_PATH=$(jq -r '.appPath' <<<"$CURL_RESULT") 
-            - name: Upload artifacts to AWS
-              script: | 
-                curl -X PUT “$APP_URL” \
-                  -H 'content-type: application/octet-stream' \
-                  -H 'x-amz-tagging: unsaved=true' \
-                  -T "build/ios/ipa/kobition_integration.ipa"
-            - name: Upload to Kobiton
-              script: | 
-                curl -X POST https://api.kobiton.com/v1/apps \
-                  -H 'Authorization:  Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
-                  -H 'Content-Type: application/json' \
-                  -H 'Accept: application/json' \
-                  -d '{"appPath": “’”$APP_PATH”’”}’
+    
 #             - name: Get URL for logs
 #               script: | 
 #                 curl -X POST https://api.kobiton.com/v1/revisitPlans/create \

@@ -122,10 +122,11 @@ workflows:
           --export-options-plist=/Users/builder/export_options.plist
       - name: Set the app URL and PATH
         script: | 
-              CURL_RESULT=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \ 
-                -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4)' \ 
-                -H 'Content-Type: application/json' \ 
-                -d '{"filename": "kobiton_integration.ipa"}' | jq -r)
+              CURL_RESULT=$( curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
+                -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+                -H 'Content-Type: application/json' \
+                -H 'Accept: application/json' \
+                -d '{"filename": "your_desired_binary_name.ipa"}' | jq -r)
 
               APP_URL=$(jq -r '.url' <<<"$CURL_RESULT")
               APP_PATH=$(jq -r '.appPath' <<<"$CURL_RESULT") 

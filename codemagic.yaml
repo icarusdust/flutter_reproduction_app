@@ -163,15 +163,15 @@ workflows:
 
 
 
-         - name: Set the app URL and PATH
-           script: | 
-                CURL_RESULT=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \ 
-                  -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4) \ 
-                  -H 'Content-Type: application/json' \ 
-                  -d '{"filename": "kobiton_integration.ipa"}' | jq -r)
+            - name: Set the app URL and PATH
+              script: | 
+                    CURL_RESULT=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \ 
+                      -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4) \ 
+                      -H 'Content-Type: application/json' \ 
+                      -d '{"filename": "kobiton_integration.ipa"}' | jq -r)
 
-                APP_URL=$(jq -r '.url' <<<"$CURL_RESULT")
-                APP_PATH=$(jq -r '.appPath' <<<"$CURL_RESULT") 
+                    APP_URL=$(jq -r '.url' <<<"$CURL_RESULT")
+                    APP_PATH=$(jq -r '.appPath' <<<"$CURL_RESULT") 
             - name: Upload artifacts to AWS
               script: | 
                 curl -X PUT “$APP_URL” \

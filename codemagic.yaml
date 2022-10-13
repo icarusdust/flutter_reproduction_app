@@ -224,7 +224,7 @@ workflows:
           CM_KEY_ALIAS_USERNAME: Encrypted(Z0FBQUFBQmcwbDcweUxYUmxxaTVEeFhxY0hTQWVteUlTMWhiNzVpazlERUFNR1g5akMxLTA4NjVKaXJ2dEdVdDhDRVV5WlNqa25kTW1raDJuYlRiT2o2YW1qTmpMWDc4akE9PQ==) # <-- Put your encrypted keystore alias username here   
       flutter: 1.22.6
       xcode: latest
-      ndk: r22b
+#       ndk: r22b
       cocoapods: default
     triggering:
       events:

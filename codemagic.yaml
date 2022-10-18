@@ -262,7 +262,7 @@ workflows:
           flutter -d 99B14BF4-7966-4427-ACD1-34BFE4D26A01 test --machine > test-results-ios/flutter.json integration_test
           flutter devices
         test_report: test-results-ios/flutter.json
-        ignore_failure: true
+#         ignore_failure: true
   
     artifacts:
       - build/**/outputs/**/*.apk

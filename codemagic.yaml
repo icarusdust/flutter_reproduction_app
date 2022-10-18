@@ -228,6 +228,7 @@ workflows:
       cocoapods: default
     triggering:
       events:
+        - pull_request
         - push
       branch_patterns:
         - pattern: 'master'

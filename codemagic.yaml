@@ -234,7 +234,7 @@ workflows:
           include: true
           source: true
     when:
-      condition: github.event.head_commit.message == 'test'
+      condition: github.event.head_commit.message == 'test1'
     scripts:
       - name: Set up key properties
         script: |

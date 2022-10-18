@@ -234,7 +234,7 @@ workflows:
           include: true
           source: true
     when:
-      condition: github.event.head_commit.message == 'buildios'
+      condition: event.head_commit.message == 'buildios'
     scripts:
       - name: Set up key properties
         script: |

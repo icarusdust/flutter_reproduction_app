@@ -230,7 +230,7 @@ workflows:
       events:
         - push
     when:
-      condition: event.head_commit.message == "test1"
+      condition: event.head_commit.message == "test12"
     scripts:
       - name: Set up key properties
         script: |

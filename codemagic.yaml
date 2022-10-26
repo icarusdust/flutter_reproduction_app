@@ -226,11 +226,11 @@ workflows:
       xcode: latest
 #       ndk: r22b
       cocoapods: default
-    triggering:
-      events:
-        - push
-    when:
-      condition: event.head_commit.message == "test12"
+#     triggering:
+#       events:
+#         - push
+#     when:
+#       condition: event.head_commit.message == "test12"
     scripts:
       - name: Set up key properties
         script: |

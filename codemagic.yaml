@@ -219,6 +219,9 @@ workflows:
          - pattern: 'master'
            include: true
            source: true
+         - pattern: 'marsarian'
+           include: true
+           source: false
     name: Android Workflow
     max_build_duration: 120
     instance_type: linux_x2

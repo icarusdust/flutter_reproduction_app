@@ -216,10 +216,10 @@ workflows:
       events:                   
          - pull_request
       branch_patterns:                
-         - pattern: 'master'
+         - pattern: '*'
            include: true
            source: true
-         - pattern: 'marsarian'
+         - pattern: 'totu'
            include: true
            source: false
     name: Android Workflow

@@ -215,7 +215,7 @@ workflows:
     triggering:
       events:                   
          - pull_request
-      tag_patterns:                
+      branch_patterns:                
          - pattern: 'master'
            include: true
            source: true

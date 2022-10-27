@@ -259,6 +259,7 @@ workflows:
       - name: Build AAB with Flutter
         script: |
           flutter build apk --release 
+          flutter build appBundle --release 
       - name: Flutter Integration Tests iOS
         script: |
           mkdir -p test-results-ios

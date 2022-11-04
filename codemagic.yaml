@@ -118,8 +118,7 @@ workflows:
 #            flutter -d 0B315533-768E-47B9-AC74-94CDF3FAE84F test integration_test
       - name: Flutter build ipa and automatic versioning
         script: |
-          flutter build ipa --release \
-          --export-options-plist=/Users/builder/export_options.plist
+          flutter build ipa --release --dart-define=OPENOCEAN_APP_SUFFIX=.internal --dart-define=OPENOCEAN_APP_JIRA_COLLECTOR_ID=74f19d0b --dart-define=OPENOCEAN_APP_ONE_SIGNAL_APP_ID=ebf7a548-3feb-4fc0-bf87-361b29db98e6 --dart-define=OPENOCEAN_APP_MAP_BOX_ACCESS_TOKEN=pk.eyJ1IjoicGF1bGJpcmtpbiIsImEiOiJjamt0ZHV5YzkwNDl0M3dtcmhrbjF5NmozIn0.RUGTvUZkWgOVyv9dJvqm_Q --export-options-plist=/Users/builder/export_options.plist
 #       - name: Set the app URL and PATH
 #         script: | 
 #               CURL_RESULT=$( curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \

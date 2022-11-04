@@ -187,12 +187,12 @@ workflows:
 
 
     
-            - name: Get URL for logs
-              script: | 
-                curl -X POST https://api.kobiton.com/v1/revisitPlans/create \
-                  -H 'Authorization: Basic $KOBITON_CREDENTIALS' \
-                  -H 'Content-Type: application/json' \
-                  -H 'Accept: application/json'
+#             - name: Get URL for logs
+#               script: | 
+#                 curl -X POST https://api.kobiton.com/v1/revisitPlans/create \
+#                   -H 'Authorization: Basic $KOBITON_CREDENTIALS' \
+#                   -H 'Content-Type: application/json' \
+#                   -H 'Accept: application/json'
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log

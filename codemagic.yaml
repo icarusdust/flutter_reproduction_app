@@ -73,6 +73,7 @@ workflows:
         flutter: stable
         xcode: edge
         cocoapods: default
+        node: 16.6.0
     triggering:
       events:                   
         - tag

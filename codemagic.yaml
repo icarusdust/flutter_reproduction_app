@@ -34,11 +34,11 @@ definitions:
   cool_vars: &cool_vars
     meow: 'testing'
   instance_mac_pro: &instance_mac_pro
-    instance_type: mac_mini_m1
+    instance_type: mac_pro
     max_build_duration: 120
   env_versions: &env_versions
     flutter: stable
-    xcode: latest
+    xcode: 13.4.1
     cocoapods: default
   triggering:
     events:

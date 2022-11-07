@@ -73,7 +73,7 @@ workflows:
         flutter: 3.3.6
         xcode: 13.4.1
         cocoapods: default
-        node: 16.6.0
+        node: 16.16.0
     triggering:
       events:                   
         - tag

@@ -70,7 +70,7 @@ workflows:
     environment:
         <<: *env_versions
         <<: *automatic_ios_signing
-        flutter: stable
+        flutter: 3.3.6
         xcode: 13.4.1
         cocoapods: default
         node: 16.6.0

@@ -71,7 +71,7 @@ workflows:
         <<: *env_versions
         <<: *automatic_ios_signing
         flutter: stable
-        xcode: edge
+        xcode: 13.4.1
         cocoapods: default
         node: 16.6.0
     triggering:

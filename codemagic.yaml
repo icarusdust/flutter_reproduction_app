@@ -86,8 +86,7 @@ workflows:
       changeset: 
         includes:
           - '.'
-                   
-          include: true
+                 
     scripts:
 #       - name: Firebase
 #         script: |

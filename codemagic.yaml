@@ -74,18 +74,18 @@ workflows:
         xcode: 13.4.1
         cocoapods: default
         node: 16.16.0
-    triggering:
-      events:                   
-        - pull_request
-      branch_patterns:                
-        - pattern: 'master'
-          include: true
-          source: true 
-#       cancel_previous_builds: false
-    when: 
-      changeset: 
-        includes:
-          - '.'
+#     triggering:
+#       events:                   
+#         - pull_request
+#       branch_patterns:                
+#         - pattern: 'master'
+#           include: true
+#           source: true 
+# #       cancel_previous_builds: false
+#     when: 
+#       changeset: 
+#         includes:
+#           - '.'
                  
     scripts:
 #       - name: Firebase
@@ -100,6 +100,9 @@ workflows:
           /usr/local/bin/docker --version
           echo $PRODUCT_BUILD_NUMBER
           echo $BUILD_NUMBER
+      - name: Cache clean-up
+        script: |
+        
       - name: Fetch signing files
         script: |
           app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_ADHOC --create
@@ -112,7 +115,10 @@ workflows:
           xcode-project use-profiles
       - name: Get Flutter packages
         script: |
-          cd . && flutter packages pub get         
+          cd . && flutter clean
+          cd . && rm -r ~/.pub-cache
+          cd . && flutter pub cache clean && flutter pub get  
+          cd . && flutter packages pub get
       - name: Install pods
         script: |
           find . -name "Podfile" -execdir pod install \;

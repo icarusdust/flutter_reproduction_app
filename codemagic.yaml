@@ -116,9 +116,6 @@ workflows:
           xcode-project use-profiles
       - name: Get Flutter packages
         script: |
-#         cd . && flutter clean
-#         cd . && rm -r ~/.pub-cache
-#         cd . && flutter pub cache clean  
           cd . && flutter packages pub get
       - name: Install pods
         script: |

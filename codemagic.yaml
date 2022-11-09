@@ -87,7 +87,7 @@ workflows:
         includes:
           - '.'
                    
-          include: true
+#           include: true
     scripts:
 #       - name: Firebase
 #         script: |

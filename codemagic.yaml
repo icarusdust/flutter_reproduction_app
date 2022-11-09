@@ -76,9 +76,16 @@ workflows:
         node: 16.16.0
     triggering:
       events:                   
-        - tag
-      tag_patterns:                
-        - pattern: 'v*.*.*+*-productionn'
+        - pull_request
+      branch_patterns:                
+        - pattern: 'master'
+          include: true
+          source: true 
+      cancel_previous_builds: false
+    when: 
+      changeset: 
+        includes:
+          - '.'
                    
           include: true
     scripts:

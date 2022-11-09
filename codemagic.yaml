@@ -71,7 +71,7 @@ workflows:
         <<: *env_versions
         <<: *automatic_ios_signing
         flutter: 3.3.6
-        xcode: 13.4.1
+        xcode: 14.1
         cocoapods: default
         node: 16.16.0
 #     triggering:
@@ -92,7 +92,11 @@ workflows:
 #         script: |
 #           flutter pub add firebase_core
 #           flutter pub add firebase_messaging
-
+      - name: Clean-up
+        script: |
+          rm -rf /Applications/Xcode-13.3.app
+          rm -rf /Applications/Xcode-13.4.app
+          rm -rf /Applications/Xcode-14.0.app
     
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |

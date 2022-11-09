@@ -81,7 +81,6 @@ workflows:
         - pattern: 'master'
           include: true
           source: true 
-#       cancel_previous_builds: false
     when: 
       changeset: 
         includes:

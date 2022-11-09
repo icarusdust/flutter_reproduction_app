@@ -100,9 +100,6 @@ workflows:
           /usr/local/bin/docker --version
           echo $PRODUCT_BUILD_NUMBER
           echo $BUILD_NUMBER
-      - name: Cache clean-up
-        script: |
-        
       - name: Fetch signing files
         script: |
           app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_ADHOC --create

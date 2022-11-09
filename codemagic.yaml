@@ -78,7 +78,7 @@ workflows:
       events:                   
         - pull_request
       branch_patterns:                
-        - pattern: 'master'
+        - pattern: 'titi8'
           include: true
           source: true 
 #       cancel_previous_builds: false

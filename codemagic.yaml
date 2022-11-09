@@ -114,7 +114,7 @@ workflows:
         script: |
           cd . && flutter clean
           cd . && rm -r ~/.pub-cache
-          cd . && flutter pub cache clean && flutter pub get  
+          cd . && flutter pub cache clean  
           cd . && flutter packages pub get
       - name: Install pods
         script: |

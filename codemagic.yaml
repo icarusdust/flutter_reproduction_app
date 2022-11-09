@@ -202,7 +202,7 @@ workflows:
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
-      - flutter_drive.log
+#       - flutter_drive.log
 # #     publishing:
 #       app_store_connect:
 #         api_key: $APP_STORE_CONNECT_PRIVATE_KEY         

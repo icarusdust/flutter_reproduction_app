@@ -207,13 +207,13 @@ workflows:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
-# #     publishing:
-#       app_store_connect:
-#         api_key: $APP_STORE_CONNECT_PRIVATE_KEY         
-#         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER       
-#         issuer_id: $APP_STORE_CONNECT_ISSUER_ID         
-#         submit_to_app_store: true 
-#         release_type: AFTER_APPROVAL
+#     publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY         
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER       
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID         
+        # submit_to_app_store: true 
+        # release_type: AFTER_APPROVAL
 
 
 

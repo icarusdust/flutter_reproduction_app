@@ -92,18 +92,18 @@ workflows:
 #         script: |
 #           flutter pub add firebase_core
 #           flutter pub add firebase_messaging
-      - name: Clean-up
-        script: |
-          rm -rf /Applications/Xcode-13.3.app
-          rm -rf /Applications/Xcode-13.4.app
-          rm -rf /Applications/Xcode-14.0.app
+      # - name: Clean-up
+      #   script: |
+      #     rm -rf /Applications/Xcode-13.3.app
+      #     rm -rf /Applications/Xcode-13.4.app
+      #     rm -rf /Applications/Xcode-14.0.app
     
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |
           keychain initialize
-          /usr/local/bin/docker --version
-          echo $PRODUCT_BUILD_NUMBER
-          echo $BUILD_NUMBER
+          # /usr/local/bin/docker --version
+          # echo $PRODUCT_BUILD_NUMBER
+          # echo $BUILD_NUMBER
       - name: Fetch signing files
         script: |
           app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_ADHOC --create

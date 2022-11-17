@@ -208,13 +208,17 @@ workflows:
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
     publishing:
-      slack:
-        # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
-        channel: "#test_channel"
-        notify_on_build_start: true # To receive a notification when a build starts
-        notify:
-          success: true # To receive a notification when a build succeeds
-          failure: false # To not receive a notification when a build fails
+      scripts:
+        - name: Slack custom
+          script: |
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
+#       slack:
+#         # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
+#         channel: "#test_channel"
+#         notify_on_build_start: true # To receive a notification when a build starts
+#         notify:
+#           success: true # To receive a notification when a build succeeds
+#           failure: false # To not receive a notification when a build fails
 #       app_store_connect:
 #         api_key: $APP_STORE_CONNECT_PRIVATE_KEY         
 #         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER       

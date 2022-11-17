@@ -91,12 +91,12 @@ workflows:
 #       - name: Firebase
 #         script: |
 #           flutter pub add firebase_core
-#           flutter pub add firebase_messaging
-      - name: Clean-up
-        script: |
-          rm -rf /Applications/Xcode-13.3.app
-          rm -rf /Applications/Xcode-13.4.app
-          rm -rf /Applications/Xcode-14.0.app
+# #           flutter pub add firebase_messaging
+#       - name: Clean-up
+#         script: |
+#           rm -rf /Applications/Xcode-13.3.app
+#           rm -rf /Applications/Xcode-13.4.app
+#           rm -rf /Applications/Xcode-14.0.app
     
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |

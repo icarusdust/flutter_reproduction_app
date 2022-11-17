@@ -51,6 +51,7 @@ definitions:
         - appstore_credentials
         - ios
         - test_ios
+        - slack
       vars:
         BUNDLE_ID: "com.example.kobitionIntegration"
         XCODE_WORKSPACE: "App.xcworspace"
@@ -211,8 +212,8 @@ workflows:
       scripts:
         - name: Slack custom
           script: |
-            curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
-#       slack:
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' $WEBHOOK_URL     
+#           slack:
 #         # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
 #         channel: "#test_channel"
 #         notify_on_build_start: true # To receive a notification when a build starts

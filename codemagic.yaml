@@ -220,6 +220,8 @@ workflows:
             curl -X POST -H 'Content-type: application/json' \
             --data \
             '{
+              "attachments": [
+              {
                  "blocks": [
                       {
                         "type": "section",
@@ -251,6 +253,8 @@ workflows:
                       },
                     ]
                   }
+                ]
+                }
                 ]
               }' $WEBHOOK_URL
 

@@ -221,27 +221,6 @@ workflows:
             --data \
             '{
                  "blocks": [
-#           {
-#             "type": "section",
-#             "text": {
-#               "type": "mrkdwn",
-#               "text": "Build with build id <https://codemagic.io/app/'"$CM_PROJECT_ID"'/build/'"$CM_BUILD_ID"'>"
-#             }
-#           },
-#           {
-#             "type": "divider"
-#           },
-#           {
-#             "type": "section",
-#             "block_id": "section567",
-#             "text": {
-#               "type": "mrkdwn",
-#               "text": "<https://github.com/'"$CM_REPO_SLUG"'> Merge pull request"
-#             }
-#           },
-#           {
-#             "type": "divider"
-#           },
                       {
                         "type": "section",
                         "text": {

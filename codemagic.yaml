@@ -218,20 +218,44 @@ workflows:
           script: |
            ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'".ipa"'")) | .url')
             curl -X POST -H 'Content-type: application/json' \
-            --data \
-            '{
-                 "blocks": [
-                      {
-                        "type": "section",
-                        "text": {
-                          "type": "mrkdwn",
-                          "text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>"
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }' $WEBHOOK_URL
+            --data '\
+               {
+                  "attachments": [
+                    {
+                      "blocks": [
+                        {
+                          "type": "section",
+                          "text": {
+                            "type": "mrkdwn",
+                            "text": "Build with build id <https://codemagic.io/app/'"$CM_PROJECT_ID"'/build/'"$CM_BUILD_ID"'>"
+                          }
+                        },
+                        {
+                          "type": "divider"
+                        },
+                        {
+                          "type": "section",
+                          "block_id": "section567",
+                          "text": {
+                            "type": "mrkdwn",
+                            "text": "<https://github.com/'"$CM_REPO_SLUG"'> Merge pull request"
+                          }
+                        },
+                        {
+                          "type": "divider"
+                        },
+                        {
+                          "type": "section",
+                          "text": {
+                            "type": "mrkdwn",
+                            "text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>"
+                          }
+                        },
+                      ]
+                    }
+                  ]
+                }
+                ' $WEBHOOK_URL
 
 #           slack:
 #         # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack

@@ -217,22 +217,8 @@ workflows:
         - name: Publish to Slack
           script: |
            ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'".ipa"'")) | .url')
-           curl -0 -v -X POST $WEBHOOK_URL \
-            -H 'Content-type: application/json' \
-            --data-raw
-           '
-                {
-                  "blocks": [
-                    {
-                      "type": "section",
-                      "text": {
-                        "type": "mrkdwn",
-                        "text": "Hello"
-                      }
-                    },
-                  ]
-                }
-            }'
+           curl -X POST -H 'Content-type: application/json' \
+           --data '{"text":"${ARTIFACT_URL}"}' $WEBHOOK_URL
 #           slack:
 #         # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
 #         channel: "#test_channel"

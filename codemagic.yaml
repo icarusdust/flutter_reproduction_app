@@ -220,8 +220,7 @@ workflows:
             curl -X POST -H 'Content-type: application/json' \
             --data \
              '{
-                  "text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>",
-                  "text": "Build with build id <https://codemagic.io/app/'"$CM_PROJECT_ID"'/build/'"$CM_BUILD_ID"'"
+                  "text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>"
                   }' $WEBHOOK_URL
 
 #           slack:

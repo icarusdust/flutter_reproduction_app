@@ -222,17 +222,13 @@ workflows:
             '{
               "blocks":[
                     {
-                    "text": {
-                      "type": "mrkdwn",
                       "text": "Build with build id <https://codemagic.io/app/'"$CM_PROJECT_ID"'/build/'"$CM_BUILD_ID"'>"
-                    }
                   },
                      {
-                    "text": {
                       "text": "text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>"
-                    }
-                  },            
-                 ]}' $WEBHOOK_URL
+                  }            
+                 ]
+                 }' $WEBHOOK_URL
 #           slack:
 #         # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
 #         channel: "#test_channel"

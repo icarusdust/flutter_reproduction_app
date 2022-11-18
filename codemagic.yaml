@@ -220,8 +220,6 @@ workflows:
             curl -X POST -H 'Content-type: application/json' \
             --data \
             '{
-              "attachments": [
-              {
                  "blocks": [
                       {
                         "type": "section",
@@ -250,11 +248,9 @@ workflows:
                           "type": "mrkdwn",
                           "text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>"
                         }
-                      },
+                      }
                     ]
                   }
-                ]
-                }
                 ]
               }' $WEBHOOK_URL
 

@@ -218,8 +218,8 @@ workflows:
           script: |
            ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'".ipa"'")) | .url')
             curl -X POST -H 'Content-type: application/json' \
-            --data '
-               {
+            --data 
+               '{
                   "attachments": [
                     {
                       "blocks": [

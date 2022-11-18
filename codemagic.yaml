@@ -219,7 +219,7 @@ workflows:
            ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'".ipa"'")) | .url')
             curl -X POST -H 'Content-type: application/json' \
             --data \
-            {
+            '{
                  "blocks": [
                       {
                         "type": "section",
@@ -252,7 +252,7 @@ workflows:
                     ]
                   }
                 ]
-              } $WEBHOOK_URL
+              }' $WEBHOOK_URL
 
 #           slack:
 #         # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack

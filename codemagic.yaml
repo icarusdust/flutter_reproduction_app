@@ -227,7 +227,7 @@ workflows:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>"
+                        "text": "Hello"
                       }
                     },
                   ]

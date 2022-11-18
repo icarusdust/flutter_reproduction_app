@@ -216,7 +216,7 @@ workflows:
 #             scripts: 
         - name: Publish to Slack
           script: |
-          ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'".ipa"'")) | .url')
+            ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'".ipa"'")) | .url')
             curl -0 -v -X POST $WEBHOOK_URL \
             -H 'Content-type: application/json' \
             --data-raw '

@@ -220,8 +220,7 @@ workflows:
            curl -0 -v -X POST $WEBHOOK_URL \
             -H 'Content-type: application/json' \
             --data-raw
-           '{
-              "attachments": [
+           '
                 {
                   "blocks": [
                     {
@@ -233,7 +232,6 @@ workflows:
                     },
                   ]
                 }
-              ] 
             }'
 #           slack:
 #         # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack

@@ -218,7 +218,12 @@ workflows:
           script: |
            ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'".ipa"'")) | .url')
            curl -X POST -H 'Content-type: application/json' \
-           --data '{"text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>"}' $WEBHOOK_URL
+           --data \
+            '{
+              "blocks":[
+                 "text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>",
+                 "text": "Build with build id <https://codemagic.io/app/'"$CM_PROJECT_ID"'/build/'"$CM_BUILD_ID"'>"
+                 ]}' $WEBHOOK_URL
 #           slack:
 #         # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
 #         channel: "#test_channel"

@@ -44,7 +44,7 @@ definitions:
     events:
       - tag
     tag_patterns:
-      - pattern: 'v1.9-qa'
+      - pattern: '*'
         include: true
   environment:
     automatic_ios_signing: &automatic_ios_signing

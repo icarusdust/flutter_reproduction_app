@@ -83,7 +83,7 @@ workflows:
       events:
         - tag             
       tag_patterns:
-        - pattern: '*'
+        - pattern: 'v*.*-prod'
           include: true
         
 # #       cancel_previous_builds: false

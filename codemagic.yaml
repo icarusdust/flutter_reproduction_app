@@ -43,6 +43,10 @@ definitions:
   triggering:
     events:
       - tag
+    branch_patterns:              
+      - pattern: '*'
+        include: true
+        source: true
     tag_patterns:
       - pattern: 'v*.*.*-prod'
         include: true

@@ -40,12 +40,12 @@ definitions:
     flutter: stable
     xcode: 13.4.1
     cocoapods: default
-  triggering:
-    events:
-      - tag
-    tag_patterns:
-      - pattern: '*'
-        include: true
+  # triggering:
+  #   events:
+  #     - tag
+  #   tag_patterns:
+  #     - pattern: '*'
+  #       include: true
   environment:
     automatic_ios_signing: &automatic_ios_signing
       groups:
@@ -79,13 +79,13 @@ workflows:
     cache:
       cache_paths:
         - $HOME/Library/Caches/CocoaPods
-#     triggering:
-#       events:                   
-#         - pull_request
-#       branch_patterns:                
-#         - pattern: 'master'
-#           include: true
-#           source: true 
+    triggering:
+      events:
+        - tag             
+      tag_patterns:
+        - pattern: '*'
+          include: true
+        
 # #       cancel_previous_builds: false
 #     when: 
 #       changeset: 

@@ -48,7 +48,7 @@ definitions:
         include: true
         source: true
     tag_patterns:
-      - pattern: '*'
+      - pattern: 'mars7867'
         include: true
   environment:
     automatic_ios_signing: &automatic_ios_signing

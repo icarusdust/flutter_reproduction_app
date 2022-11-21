@@ -45,6 +45,7 @@ definitions:
       - tag
     tag_patterns:
       - pattern: 'v*.*.*-prod'
+        include: true
   environment:
     automatic_ios_signing: &automatic_ios_signing
       groups:

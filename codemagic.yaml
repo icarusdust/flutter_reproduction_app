@@ -40,11 +40,11 @@ definitions:
     flutter: stable
     xcode: 13.4.1
     cocoapods: default
-#   triggering:
-#     events:
-#       - tag
-#     tag_patterns:
-#       - pattern: 'v1.2'
+  triggering:
+    events:
+      - tag
+    tag_patterns:
+      - pattern: 'v1.2'
   environment:
     automatic_ios_signing: &automatic_ios_signing
       groups:

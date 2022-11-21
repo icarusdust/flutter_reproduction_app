@@ -44,7 +44,7 @@ definitions:
     events:
       - tag
     branch_patterns:              
-      - pattern: '*'
+      - pattern: 'develop'
         include: true
         source: true
     tag_patterns:

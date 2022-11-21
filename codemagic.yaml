@@ -51,6 +51,7 @@ definitions:
         - appstore_credentials
         - ios
         - test_ios
+        - slack
       vars:
         BUNDLE_ID: "com.example.kobitionIntegration"
         XCODE_WORKSPACE: "App.xcworspace"
@@ -74,6 +75,9 @@ workflows:
         xcode: 14.1
         cocoapods: default
         node: 16.16.0
+    cache:
+      cache_paths:
+        - $HOME/Library/Caches/CocoaPods
 #     triggering:
 #       events:                   
 #         - pull_request
@@ -91,12 +95,12 @@ workflows:
 #       - name: Firebase
 #         script: |
 #           flutter pub add firebase_core
-#           flutter pub add firebase_messaging
-      - name: Clean-up
-        script: |
-          rm -rf /Applications/Xcode-13.3.app
-          rm -rf /Applications/Xcode-13.4.app
-          rm -rf /Applications/Xcode-14.0.app
+# #           flutter pub add firebase_messaging
+#       - name: Clean-up
+#         script: |
+#           rm -rf /Applications/Xcode-13.3.app
+#           rm -rf /Applications/Xcode-13.4.app
+#           rm -rf /Applications/Xcode-14.0.app
     
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |
@@ -207,7 +211,61 @@ workflows:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
-# #     publishing:
+    publishing:
+      scripts:
+#         - name: Slack custom
+#           script: |
+#             curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' $WEBHOOK_URL  
+#             scripts: 
+        - name: Publish to Slack
+          script: |
+            ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'".ipa"'")) | .url')
+            curl -0 -v -X POST $WEBHOOK_URL \
+            -H 'Content-type: application/json' \
+            --data-raw '
+            {
+            "attachments": [
+              {
+                "blocks": [
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "Build with build id <https://codemagic.io/app/'"$CM_PROJECT_ID"'/build/'"$CM_BUILD_ID"'>"
+                    }
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "section",
+                    "block_id": "section567",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "<https://github.com/'"$CM_REPO_SLUG"'> Merge pull request"
+                    }
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>"
+                    }
+                  },
+                ]
+              }
+            ] 
+            }'
+#           slack:
+#         # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
+#         channel: "#test_channel"
+#         notify_on_build_start: true # To receive a notification when a build starts
+#         notify:
+#           success: true # To receive a notification when a build succeeds
+#           failure: false # To not receive a notification when a build fails
 #       app_store_connect:
 #         api_key: $APP_STORE_CONNECT_PRIVATE_KEY         
 #         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER       

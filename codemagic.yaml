@@ -213,7 +213,8 @@ workflows:
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
     publishing:
-      scripts:
+         app_store_connect --private-key $APP_STORE_CONNECT_PRIVATE_KEY --key-id $APP_STORE_CONNECT_KEY_IDENTIFIER --issuer-id $APP_STORE_CONNECT_ISSUER_ID         
+
 #         - name: Slack custom
 #           script: |
 #             curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' $WEBHOOK_URL  
@@ -267,7 +268,6 @@ workflows:
 #         notify:
 #           success: true # To receive a notification when a build succeeds
 #           failure: false # To not receive a notification when a build fails
-      app_store_connect --private-key $APP_STORE_CONNECT_PRIVATE_KEY --key-id $APP_STORE_CONNECT_KEY_IDENTIFIER --issuer-id $APP_STORE_CONNECT_ISSUER_ID         
 #         submit_to_app_store: true 
 #         release_type: AFTER_APPROVAL
 

@@ -268,7 +268,7 @@ workflows:
 #           success: true # To receive a notification when a build succeeds
 #           failure: false # To not receive a notification when a build fails
       app_store_connect:
-        api_key: $APP_STORE_CONNECT_PRIVATE_KEY         
+        api_key: @file:AuthKey_76XJ742FMW.p8       
         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER       
         issuer_id: $APP_STORE_CONNECT_ISSUER_ID         
 #         submit_to_app_store: true 

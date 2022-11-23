@@ -214,7 +214,7 @@ workflows:
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
     publishing:
-         app_store_connect --private-key @file:creds/AuthKey_76XJ742FMW.p8 --key-id "$APP_STORE_CONNECT_KEY_IDENTIFIER" --issuer-id "$APP_STORE_CONNECT_ISSUER_ID"         
+         app_store_connect --private-key=@file:creds/AuthKey_76XJ742FMW.p8 --key-id "$APP_STORE_CONNECT_KEY_IDENTIFIER" --issuer-id "$APP_STORE_CONNECT_ISSUER_ID"         
 
 #         - name: Slack custom
 #           script: |

@@ -217,49 +217,49 @@ workflows:
 #         - name: Slack custom
 #           script: |
 #             curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' $WEBHOOK_URL  
-#             scripts: 
-        - name: Publish to Slack
-          script: |
-            ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'".ipa"'")) | .url')
-            curl -0 -v -X POST $WEBHOOK_URL \
-            -H 'Content-type: application/json' \
-            --data-raw '
-            {
-            "attachments": [
-              {
-                "blocks": [
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "Build with build id <https://codemagic.io/app/'"$CM_PROJECT_ID"'/build/'"$CM_BUILD_ID"'>"
-                    }
-                  },
-                  {
-                    "type": "divider"
-                  },
-                  {
-                    "type": "section",
-                    "block_id": "section567",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "<https://github.com/'"$CM_REPO_SLUG"'> Merge pull request"
-                    }
-                  },
-                  {
-                    "type": "divider"
-                  },
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>"
-                    }
-                  },
-                ]
-              }
-            ] 
-            }'
+# #             scripts: 
+#         - name: Publish to Slack
+#           script: |
+#             ARTIFACT_URL=$(echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'".ipa"'")) | .url')
+#             curl -0 -v -X POST $WEBHOOK_URL \
+#             -H 'Content-type: application/json' \
+#             --data-raw '
+#             {
+#             "attachments": [
+#               {
+#                 "blocks": [
+#                   {
+#                     "type": "section",
+#                     "text": {
+#                       "type": "mrkdwn",
+#                       "text": "Build with build id <https://codemagic.io/app/'"$CM_PROJECT_ID"'/build/'"$CM_BUILD_ID"'>"
+#                     }
+#                   },
+#                   {
+#                     "type": "divider"
+#                   },
+#                   {
+#                     "type": "section",
+#                     "block_id": "section567",
+#                     "text": {
+#                       "type": "mrkdwn",
+#                       "text": "<https://github.com/'"$CM_REPO_SLUG"'> Merge pull request"
+#                     }
+#                   },
+#                   {
+#                     "type": "divider"
+#                   },
+#                   {
+#                     "type": "section",
+#                     "text": {
+#                       "type": "mrkdwn",
+#                       "text": "*Android Artifact Link* <'"$ARTIFACT_URL"'|Download>"
+#                     }
+#                   },
+#                 ]
+#               }
+#             ] 
+#             }'
 #           slack:
 #         # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
 #         channel: "#test_channel"
@@ -267,10 +267,10 @@ workflows:
 #         notify:
 #           success: true # To receive a notification when a build succeeds
 #           failure: false # To not receive a notification when a build fails
-#       app_store_connect:
-#         api_key: $APP_STORE_CONNECT_PRIVATE_KEY         
-#         key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER       
-#         issuer_id: $APP_STORE_CONNECT_ISSUER_ID         
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY         
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER       
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID         
 #         submit_to_app_store: true 
 #         release_type: AFTER_APPROVAL
 

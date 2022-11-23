@@ -58,6 +58,7 @@ definitions:
         XCODE_WORKSPACE: "App.xcworspace"
         XCODE_SCHEME: "App"
         XCODE_CONFIG: "Release-dev"
+        TEST: "@file:creds/AuthKey_76XJ742FMW.p8"
 #     browserstack_upload: &browserstack_upload
 #       groups:
 #          - appstore_credentials
@@ -213,7 +214,7 @@ workflows:
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
     publishing:
-         app_store_connect --private-key @file:creds/AuthKey_76XJ742FMW.p8 --key-id "$APP_STORE_CONNECT_KEY_IDENTIFIER" --issuer-id "$APP_STORE_CONNECT_ISSUER_ID"         
+         app_store_connect --private-key $TEST --key-id "$APP_STORE_CONNECT_KEY_IDENTIFIER" --issuer-id "$APP_STORE_CONNECT_ISSUER_ID"         
 
 #         - name: Slack custom
 #           script: |

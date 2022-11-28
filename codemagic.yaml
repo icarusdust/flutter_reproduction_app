@@ -77,7 +77,7 @@ workflows:
         xcode: 14.1
         cocoapods: default
         node: 16.16.0
-        ruby: 3.0.4
+        ruby: 3.0.3
     cache:
       cache_paths:
         - $HOME/Library/Caches/CocoaPods

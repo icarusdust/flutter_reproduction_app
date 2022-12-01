@@ -49,10 +49,10 @@ definitions:
   environment:
     automatic_ios_signing: &automatic_ios_signing
       groups:
-        - appstore_credentials
+#         - appstore_credentials
         - ios
-        - test_ios
-        - slack
+#         - test_ios
+#         - slack
       vars:
         BUNDLE_ID: "com.example.kobitionIntegration"
         XCODE_WORKSPACE: "App.xcworspace"

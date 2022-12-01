@@ -59,11 +59,11 @@ definitions:
         XCODE_SCHEME: "App"
         XCODE_CONFIG: "Release-dev"
      
-    browserstack_upload: &browserstack_upload
-      groups:
-         - appstore_credentials
-      vars:
-        TEST: '123'
+#     browserstack_upload: &browserstack_upload
+#       groups:
+#          - appstore_credentials
+#       vars:
+#         TEST: '123'
 
 
 workflows:
@@ -73,6 +73,8 @@ workflows:
     environment:
         <<: *env_versions
         <<: *automatic_ios_signing
+        groups:
+         - tester
         flutter: 3.3.6
         xcode: 14.1
         cocoapods: default

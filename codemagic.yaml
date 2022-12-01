@@ -30,52 +30,52 @@
 
 
 
-# definitions:
-#   cool_vars: &cool_vars
-#     meow: 'testing'
-#   instance_mac_pro: &instance_mac_pro
-#     instance_type: linux_x2
-#     max_build_duration: 120
-#   env_versions: &env_versions
-#     flutter: stable
-#     xcode: 13.4.1
-#     cocoapods: default
-#   # triggering:
-#   #   events:
-#   #     - tag
-#   #   tag_patterns:
-#   #     - pattern: '*'
-#   #       include: true
-#   environment:
-#     automatic_ios_signing: &automatic_ios_signing
-#       groups:
-#         - appstore_credentials
-#         - ios
-#         - test_ios
-#         - slack
-#       vars:
-#         BUNDLE_ID: "com.example.kobitionIntegration"
-#         XCODE_WORKSPACE: "App.xcworspace"
-#         XCODE_SCHEME: "App"
-#         XCODE_CONFIG: "Release-dev"
+definitions:
+  cool_vars: &cool_vars
+    meow: 'testing'
+  instance_mac_pro: &instance_mac_pro
+    instance_type: mac_mini_m1
+    max_build_duration: 120
+  env_versions: &env_versions
+    flutter: stable
+    xcode: 13.4.1
+    cocoapods: default
+  # triggering:
+  #   events:
+  #     - tag
+  #   tag_patterns:
+  #     - pattern: '*'
+  #       include: true
+  environment:
+    automatic_ios_signing: &automatic_ios_signing
+      groups:
+        - appstore_credentials
+        - ios
+        - test_ios
+        - slack
+      vars:
+        BUNDLE_ID: "com.example.kobitionIntegration"
+        XCODE_WORKSPACE: "App.xcworspace"
+        XCODE_SCHEME: "App"
+        XCODE_CONFIG: "Release-dev"
      
-# #     browserstack_upload: &browserstack_upload
-# #       groups:
-# #          - appstore_credentials
-# #       vars:
-# #         TEST: '123'
+    browserstack_upload: &browserstack_upload
+      groups:
+         - appstore_credentials
+      vars:
+        TEST: '123'
 
 
-# workflows:
-#   ios-workflow:
-#     name: iOS Workflow
-#     <<: *instance_mac_pro
-#     environment:
-#         <<: *env_versions
-#         <<: *automatic_ios_signing
-#         flutter: 3.3.6
-#         xcode: 14.1
-#         cocoapods: default
+workflows:
+  ios-workflow:
+    name: iOS Workflow
+    <<: *instance_mac_pro
+    environment:
+        <<: *env_versions
+        <<: *automatic_ios_signing
+        flutter: 3.3.6
+        xcode: 14.1
+        cocoapods: default
 #         node: 16.16.0
 #         ruby: 3.0.3
 #     cache:
@@ -88,132 +88,132 @@
 #         - pattern: 'v*.*-prod'
 #           include: true
         
-# # #       cancel_previous_builds: false
-# #     when: 
-# #       changeset: 
-# #         includes:
-# #           - '.'
+# #       cancel_previous_builds: false
+#     when: 
+#       changeset: 
+#         includes:
+#           - '.'
                  
-#     scripts:
-# #       - name: Firebase
-# #         script: |
-# #           flutter pub add firebase_core
-# # #           flutter pub add firebase_messaging
-# #       - name: Clean-up
-# #         script: |
-# #           rm -rf /Applications/Xcode-13.3.app
-# #           rm -rf /Applications/Xcode-13.4.app
-# #           rm -rf /Applications/Xcode-14.0.app
+    scripts:
+#       - name: Firebase
+#         script: |
+#           flutter pub add firebase_core
+# #           flutter pub add firebase_messaging
+#       - name: Clean-up
+#         script: |
+#           rm -rf /Applications/Xcode-13.3.app
+#           rm -rf /Applications/Xcode-13.4.app
+#           rm -rf /Applications/Xcode-14.0.app
     
-#       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-#         script: |
-#           keychain initialize
-#           /usr/local/bin/docker --version
-#           echo $PRODUCT_BUILD_NUMBER
-#           echo $BUILD_NUMBER
-#       - name: Fetch signing files
-#         script: |
-#           app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_ADHOC --create
-#       - name: Use system default keychain
-#         script: |
-#           keychain add-certificates
-# #       - *codesign
-#       - name: Set up code signing settings on Xcode project
-#         script: |
-#           xcode-project use-profiles
-#       - name: Get Flutter packages
-#         script: |
-#           cd . && flutter packages pub get
-#       - name: Install pods
-#         script: |
-#           find . -name "Podfile" -execdir pod install \;
+      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+        script: |
+          keychain initialize
+          /usr/local/bin/docker --version
+          echo $PRODUCT_BUILD_NUMBER
+          echo $BUILD_NUMBER
+      - name: Fetch signing files
+        script: |
+          app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_ADHOC --create
+      - name: Use system default keychain
+        script: |
+          keychain add-certificates
+#       - *codesign
+      - name: Set up code signing settings on Xcode project
+        script: |
+          xcode-project use-profiles
+      - name: Get Flutter packages
+        script: |
+          cd . && flutter packages pub get
+      - name: Install pods
+        script: |
+          find . -name "Podfile" -execdir pod install \;
      
           
-# #       - name: Flutter Integration Tests iOS
-# #         script: |
-# #            flutter emulators --launch apple_ios_simulator
-# #            xcrun simctl boot 0B315533-768E-47B9-AC74-94CDF3FAE84F
-# #            flutter -d 0B315533-768E-47B9-AC74-94CDF3FAE84F test integration_test
-#       - name: Flutter build ipa and automatic versioning
+#       - name: Flutter Integration Tests iOS
 #         script: |
-#           flutter build ipa --release --dart-define=OPENOCEAN_APP_SUFFIX=.internal --dart-define=OPENOCEAN_APP_JIRA_COLLECTOR_ID=74f19d0b --dart-define=OPENOCEAN_APP_ONE_SIGNAL_APP_ID=ebf7a548-3feb-4fc0-bf87-361b29db98e6 --dart-define=OPENOCEAN_APP_MAP_BOX_ACCESS_TOKEN=pk.eyJ1IjoicGF1bGJpcmtpbiIsImEiOiJjamt0ZHV5YzkwNDl0M3dtcmhrbjF5NmozIn0.RUGTvUZkWgOVyv9dJvqm_Q --export-options-plist=/Users/builder/export_options.plist
-#       - name: Set the app URL and PATH
-#         script: | 
-#               CURL_RESULT=$( curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
-#                 -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
-#                 -H 'Content-Type: application/json' \
-#                 -H 'Accept: application/json' \
-#                 -d '{"filename": "your_desired_binary_name.ipa"}' | jq -r)
+#            flutter emulators --launch apple_ios_simulator
+#            xcrun simctl boot 0B315533-768E-47B9-AC74-94CDF3FAE84F
+#            flutter -d 0B315533-768E-47B9-AC74-94CDF3FAE84F test integration_test
+      - name: Flutter build ipa and automatic versioning
+        script: |
+          flutter build ipa --release --dart-define=OPENOCEAN_APP_SUFFIX=.internal --dart-define=OPENOCEAN_APP_JIRA_COLLECTOR_ID=74f19d0b --dart-define=OPENOCEAN_APP_ONE_SIGNAL_APP_ID=ebf7a548-3feb-4fc0-bf87-361b29db98e6 --dart-define=OPENOCEAN_APP_MAP_BOX_ACCESS_TOKEN=pk.eyJ1IjoicGF1bGJpcmtpbiIsImEiOiJjamt0ZHV5YzkwNDl0M3dtcmhrbjF5NmozIn0.RUGTvUZkWgOVyv9dJvqm_Q --export-options-plist=/Users/builder/export_options.plist
+      - name: Set the app URL and PATH
+        script: | 
+              CURL_RESULT=$( curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
+                -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+                -H 'Content-Type: application/json' \
+                -H 'Accept: application/json' \
+                -d '{"filename": "your_desired_binary_name.ipa"}' | jq -r)
 
-#               APP_URL=$(jq -r '.url' <<<"$CURL_RESULT")
-#               APP_PATH=$(jq -r '.appPath' <<<"$CURL_RESULT") 
-#       - name: Upload artifacts to AWS
-#         script: | 
-#           curl -X PUT “$APP_URL” \
-#             -H 'content-type: application/octet-stream' \
-#             -H 'x-amz-tagging: unsaved=true' \
-#             -T "build/ios/ipa/kobition_integration.ipa"
-#       - name: Upload to Kobiton
-#         script: | 
-#           curl -X POST https://api.kobiton.com/v1/apps \
-#             -H 'Authorization:  Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
-#             -H 'Content-Type: application/json' \
-#             -H 'Accept: application/json' \
-#             -d '{"appPath": “’”$APP_PATH”’”}’
-#       - name: BrowserStack upload
-#         script: |      
-#               curl -u "$CREDS" -X POST "https://api-cloud.browserstack.com/app-live/upload" -F "file=@build/ios/ipa/kobition_integration.ipa"
-#               echo $TEST
-
-    
-#       - name: Kobiton integration
-#         script: |       
-#          APP_URL=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
-#           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
-#           -H 'Content-Type: application/json' \
-#           -H 'Accept: application/json' \
-#           -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.url')
-          
-#            CURL_RESULT=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \ 
-#           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4) \ 
-#           -H 'Content-Type: application/json' \ 
-#           -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.url')   
-          
-#            APP_URL=$(jq -r '.url' <<<"$CURL_RESULT")
-#            APP_PATH=$(jq -r '.appPath' <<<"$CURL_RESULT")
-          
-#          APP_PATH=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
-#           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
-#           -H 'Content-Type: application/json' \
-#           -H 'Accept: application/json' \
-#           -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.appPath')
-          
-#          curl -T "${APPPATH}" \
-#           -H 'content-type: application/octet-stream' \
-#           -H 'x-amz-tagging: unsaved=true' \
-#           -X PUT "${APP_URL}"
-          
-#          curl -X POST https://api.kobiton.com/v1/apps \
-#           -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
-#           -H 'content-type: application/json' \
-#           -d "{\"filename\": \"kobition_integration.ipa\", \"appPath\": \"${APP_PATH}\"}"  
-#         - name: Pcloudy
-#           script:|
-#       curl -X POST -F "file=@/build/ios/ipa/kobition_integration.ipa" -F "source_type=raw" -F "token=93zqy94twt7325vhkg49cbkf" -F "filter=all" https://device.pcloudy.com/api/upload_file
-
-
+              APP_URL=$(jq -r '.url' <<<"$CURL_RESULT")
+              APP_PATH=$(jq -r '.appPath' <<<"$CURL_RESULT") 
+      - name: Upload artifacts to AWS
+        script: | 
+          curl -X PUT “$APP_URL” \
+            -H 'content-type: application/octet-stream' \
+            -H 'x-amz-tagging: unsaved=true' \
+            -T "build/ios/ipa/kobition_integration.ipa"
+      - name: Upload to Kobiton
+        script: | 
+          curl -X POST https://api.kobiton.com/v1/apps \
+            -H 'Authorization:  Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+            -H 'Content-Type: application/json' \
+            -H 'Accept: application/json' \
+            -d '{"appPath": “’”$APP_PATH”’”}’
+      - name: BrowserStack upload
+        script: |      
+              curl -u "$CREDS" -X POST "https://api-cloud.browserstack.com/app-live/upload" -F "file=@build/ios/ipa/kobition_integration.ipa"
+              echo $TEST
 
     
-#             - name: Get URL for logs
-#               script: | 
-#                 curl -X POST https://api.kobiton.com/v1/revisitPlans/create \
-#                   -H 'Authorization: Basic $KOBITON_CREDENTIALS' \
-#                   -H 'Content-Type: application/json' \
-#                   -H 'Accept: application/json'
-#     artifacts:
-#       - build/ios/ipa/*.ipa
-#       - /tmp/xcodebuild_logs/*.log
-#       - flutter_drive.log
+      - name: Kobiton integration
+        script: |       
+         APP_URL=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
+          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+          -H 'Content-Type: application/json' \
+          -H 'Accept: application/json' \
+          -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.url')
+          
+           CURL_RESULT=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \ 
+          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4) \ 
+          -H 'Content-Type: application/json' \ 
+          -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.url')   
+          
+           APP_URL=$(jq -r '.url' <<<"$CURL_RESULT")
+           APP_PATH=$(jq -r '.appPath' <<<"$CURL_RESULT")
+          
+         APP_PATH=$(curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \
+          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+          -H 'Content-Type: application/json' \
+          -H 'Accept: application/json' \
+          -d "{\"filename\": \"kobition_integration.ipa\"}" | jq -r '.appPath')
+          
+         curl -T "${APPPATH}" \
+          -H 'content-type: application/octet-stream' \
+          -H 'x-amz-tagging: unsaved=true' \
+          -X PUT "${APP_URL}"
+          
+         curl -X POST https://api.kobiton.com/v1/apps \
+          -H 'Authorization: Basic bmloYWxuZXZlcmNvZGU6YzBlYjVhYjQtM2YzZi00M2MwLTkzMjUtMWVhNDczMzQ5Y2E4' \
+          -H 'content-type: application/json' \
+          -d "{\"filename\": \"kobition_integration.ipa\", \"appPath\": \"${APP_PATH}\"}"  
+        - name: Pcloudy
+          script:|
+      curl -X POST -F "file=@/build/ios/ipa/kobition_integration.ipa" -F "source_type=raw" -F "token=93zqy94twt7325vhkg49cbkf" -F "filter=all" https://device.pcloudy.com/api/upload_file
+
+
+
+    
+            - name: Get URL for logs
+              script: | 
+                curl -X POST https://api.kobiton.com/v1/revisitPlans/create \
+                  -H 'Authorization: Basic $KOBITON_CREDENTIALS' \
+                  -H 'Content-Type: application/json' \
+                  -H 'Accept: application/json'
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - flutter_drive.log
 #         - name: Slack custom
 #           script: |
 #             curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' $WEBHOOK_URL  
@@ -345,36 +345,36 @@
 #       - flutter_drive.log
 #       - test-results-ios/*.json
 
-workflows:
- reproduction-web-integration-tests:
-    name: Web Integration Test Workflow
-    instance_type: mac_mini_m1
-    environment:
-      flutter: 3.3.9
-      xcode: latest
-      cocoapods: default
-    scripts:
-      - |
-        #!/usr/bin/env sh
-        set -e # exit on first failed command
+# workflows:
+#  reproduction-web-integration-tests:
+#     name: Web Integration Test Workflow
+#     instance_type: mac_mini_m1
+#     environment:
+#       flutter: 3.3.9
+#       xcode: latest
+#       cocoapods: default
+#     scripts:
+#       - |
+#         #!/usr/bin/env sh
+#         set -e # exit on first failed command
 
-        echo "Install supported chromedriver"
-        CHROME_VERSION=`/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version | awk '{print $3}'`
-        CHROME_VERSION_WITHOUT_BUILD_NUMBER=`awk -F '.' '{print $1,$2,$3}' OFS='.' <<< $CHROME_VERSION` 
-        CHROMEDRIVER_VERSION=`curl -0 https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION_WITHOUT_BUILD_NUMBER`
+#         echo "Install supported chromedriver"
+#         CHROME_VERSION=`/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version | awk '{print $3}'`
+#         CHROME_VERSION_WITHOUT_BUILD_NUMBER=`awk -F '.' '{print $1,$2,$3}' OFS='.' <<< $CHROME_VERSION` 
+#         CHROMEDRIVER_VERSION=`curl -0 https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION_WITHOUT_BUILD_NUMBER`
 
-        curl -O https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_mac64.zip
+#         curl -O https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_mac64.zip
 
-        unzip chromedriver_mac64
-        echo "Installed chromedriver $CHROMEDRIVER_VERSION"
+#         unzip chromedriver_mac64
+#         echo "Installed chromedriver $CHROMEDRIVER_VERSION"
 
-      - flutter packages pub get
-      - flutter config --enable-web
-      - ./chromedriver --port=4444 &
-      - sleep 5
-      - flutter run --dart-define=testing_mode=true --flavor integration_test integration_test/app_test.dart -d chrome
-    artifacts:
-      - flutter_drive.log
+#       - flutter packages pub get
+#       - flutter config --enable-web
+#       - ./chromedriver --port=4444 &
+#       - sleep 5
+#       - flutter run --dart-define=testing_mode=true --flavor integration_test integration_test/app_test.dart -d chrome
+#     artifacts:
+#       - flutter_drive.log
 
 
 #   launch-emulator:

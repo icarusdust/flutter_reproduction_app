@@ -83,13 +83,13 @@ workflows:
 #     cache:
 #       cache_paths:
 #         - $HOME/Library/Caches/CocoaPods
-#     triggering:
-#       events:
-#         - tag             
-#       tag_patterns:
-#         - pattern: 'v*.*-prod'
-#           include: true
-        
+    triggering:
+      events:
+        - push
+    when:
+      changeset:
+        includes:
+          - 'android/'
 # #       cancel_previous_builds: false
 #     when: 
 #       changeset: 

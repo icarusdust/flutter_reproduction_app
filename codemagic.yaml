@@ -348,36 +348,36 @@ workflows:
 #       - flutter_drive.log
 #       - test-results-ios/*.json
 
-# workflows:
-#  reproduction-web-integration-tests:
-#     name: Web Integration Test Workflow
-#     instance_type: mac_mini_m1
-#     environment:
-#       flutter: 3.3.9
-#       xcode: latest
-#       cocoapods: default
-#     scripts:
-#       - |
-#         #!/usr/bin/env sh
-#         set -e # exit on first failed command
+workflows:
+ reproduction-web-integration-tests:
+    name: Web Integration Test Workflow
+    instance_type: mac_mini_m1
+    environment:
+      flutter: 3.3.9
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - |
+        #!/usr/bin/env sh
+        set -e # exit on first failed command
 
-#         echo "Install supported chromedriver"
-#         CHROME_VERSION=`/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version | awk '{print $3}'`
-#         CHROME_VERSION_WITHOUT_BUILD_NUMBER=`awk -F '.' '{print $1,$2,$3}' OFS='.' <<< $CHROME_VERSION` 
-#         CHROMEDRIVER_VERSION=`curl -0 https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION_WITHOUT_BUILD_NUMBER`
+        echo "Install supported chromedriver"
+        CHROME_VERSION=`/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version | awk '{print $3}'`
+        CHROME_VERSION_WITHOUT_BUILD_NUMBER=`awk -F '.' '{print $1,$2,$3}' OFS='.' <<< $CHROME_VERSION` 
+        CHROMEDRIVER_VERSION=`curl -0 https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION_WITHOUT_BUILD_NUMBER`
 
-#         curl -O https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_mac64.zip
+        curl -O https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_mac64.zip
 
-#         unzip chromedriver_mac64
-#         echo "Installed chromedriver $CHROMEDRIVER_VERSION"
+        unzip chromedriver_mac64
+        echo "Installed chromedriver $CHROMEDRIVER_VERSION"
 
-#       - flutter packages pub get
-#       - flutter config --enable-web
-#       - ./chromedriver --port=4444 &
-#       - sleep 5
-#       - flutter run --dart-define=testing_mode=true --flavor integration_test integration_test/app_test.dart -d chrome
-#     artifacts:
-#       - flutter_drive.log
+      - flutter packages pub get
+      - flutter config --enable-web
+      - ./chromedriver --port=4444 &
+      - flutter -d chrome drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart
+
+    artifacts:
+      - flutter_drive.log
 
 
 #   launch-emulator:

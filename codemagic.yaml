@@ -378,6 +378,7 @@ workflows:
 
     artifacts:
       - flutter_drive.log
+      
 
 
 #   launch-emulator:

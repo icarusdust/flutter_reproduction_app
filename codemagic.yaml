@@ -69,7 +69,7 @@
 workflows:
   ios-workflow:
     name: iOS Workflow
-    <<: *instance_mac_pro
+#     <<: *instance_mac_pro
     environment:
         <<: *env_versions
         <<: *automatic_ios_signing

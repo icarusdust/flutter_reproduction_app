@@ -318,7 +318,7 @@ workflows:
     scripts:
       - name: Set up key properties
         script: |
-          CM_KEYSTORE_PATH = '123'
+          export CM_KEYSTORE_PATH='123'
           echo $CM_KEYSTORE_PATH
           echo $ANDROID_FIREBASE_SECRET > $FCI_BUILD_DIR/android/app/google-services.json
           echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore

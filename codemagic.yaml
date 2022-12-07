@@ -30,46 +30,46 @@
 
 
 
-# definitions:
-#   cool_vars: &cool_vars
-#     meow: 'testing'
-#   instance_mac_pro: &instance_mac_pro
-#     instance_type: mac_mini_m1
-#     max_build_duration: 120
-#   env_versions: &env_versions
-#     flutter: stable
-#     xcode: 13.4.1
-#     cocoapods: default
-#   # triggering:
-#   #   events:
-#   #     - tag
-#   #   tag_patterns:
-#   #     - pattern: '*'
-#   #       include: true
-#   environment:
-#     automatic_ios_signing: &automatic_ios_signing
-#       groups:
-# #         - appstore_credentials
-#         - ios
-# #         - test_ios
-# #         - slack
-#       vars:
-#         BUNDLE_ID: "com.example.kobitionIntegration"
-#         XCODE_WORKSPACE: "App.xcworspace"
-#         XCODE_SCHEME: "App"
-#         XCODE_CONFIG: "Release-dev"
+definitions:
+  cool_vars: &cool_vars
+    meow: 'testing'
+  instance_mac_pro: &instance_mac_pro
+    instance_type: mac_mini_m1
+    max_build_duration: 120
+  env_versions: &env_versions
+    flutter: stable
+    xcode: 13.4.1
+    cocoapods: default
+  # triggering:
+  #   events:
+  #     - tag
+  #   tag_patterns:
+  #     - pattern: '*'
+  #       include: true
+  environment:
+    automatic_ios_signing: &automatic_ios_signing
+      groups:
+#         - appstore_credentials
+        - ios
+#         - test_ios
+#         - slack
+      vars:
+        BUNDLE_ID: "com.example.kobitionIntegration"
+        XCODE_WORKSPACE: "App.xcworspace"
+        XCODE_SCHEME: "App"
+        XCODE_CONFIG: "Release-dev"
      
-# #     browserstack_upload: &browserstack_upload
-# #       groups:
-# #          - appstore_credentials
-# #       vars:
-# #         TEST: '123'
+#     browserstack_upload: &browserstack_upload
+#       groups:
+#          - appstore_credentials
+#       vars:
+#         TEST: '123'
 
 
 workflows:
   ios-workflow:
     name: iOS Workflow
-#     <<: *instance_mac_pro
+    <<: *instance_mac_pro
     environment:
         <<: *env_versions
         <<: *automatic_ios_signing
@@ -83,13 +83,13 @@ workflows:
 #     cache:
 #       cache_paths:
 #         - $HOME/Library/Caches/CocoaPods
-    triggering:
-      events:
-        - push
-      branch_patterns:              # Include or exclude watched branches
-        - pattern: '*'
-          include: true
-          source: true
+#     triggering:
+#       events:
+#         - push
+#       branch_patterns:              # Include or exclude watched branches
+#         - pattern: '*'
+#           include: true
+#           source: true
 #     when:
 #       changeset:
 #         includes:

@@ -255,10 +255,10 @@ workflows:
 #     when:
 #       condition: event.head_commit.message == "test12"
     scripts:
-      - name: Set up key properties
-        script: |
-          echo $ANDROID_FIREBASE_SECRET > $FCI_BUILD_DIR/android/app/google-services.json
-          echo $CM_KEYSTORE_PATH | base64 --decode > /tmp/keystore.keystore
+      # - name: Set up key properties
+      #   script: |
+      #     echo $ANDROID_FIREBASE_SECRET > $FCI_BUILD_DIR/android/app/google-services.json
+          # echo $CM_KEYSTORE_PATH | base64 --decode > /tmp/keystore.keystore
           # # The following script creates key.properties file and stores the credentials in it. As we configure code signing in app/build.gradle file, the following part is unnecessary unless code signing is configured differently as explained in the documentation: https://docs.codemagic.io/flutter-code-signing/android-code-signing/
           # cat >> "$FCI_BUILD_DIR/android/key.properties" <<EOF
           # storePassword=$FCI_KEYSTORE_PASSWORD

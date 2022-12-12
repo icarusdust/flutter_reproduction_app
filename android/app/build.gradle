@@ -37,8 +37,10 @@ android {
         applicationId "codemagic.kobition_integration.io"
         minSdkVersion 16
         targetSdkVersion 31
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        versionCode 2
+        versionName "1.0.2"
+        // versionCode flutterVersionCode.toInteger()
+        // versionName flutterVersionName
     }
    signingConfigs {
           release {

@@ -1,4 +1,4 @@
-package com.example.kobition_integration
+package codemagic.kobition_integration.io
 
 import io.flutter.embedding.android.FlutterActivity
 

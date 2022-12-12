@@ -295,11 +295,11 @@ workflows:
       - build/**/outputs/**/mapping.txt
       - flutter_drive.log
       - test-results-ios/*.json
-    # publishing:
-    #   google_play:
-    #     credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-    #     track: internal
-    #     submit_as_draft: true
+    publishing:
+      google_play:
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: internal
+        submit_as_draft: true
     
 # workflows:
 

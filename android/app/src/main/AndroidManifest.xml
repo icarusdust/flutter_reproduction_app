@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kobition_integration">
+    package="codemagic.kobition_integration.io">
    <application
         android:label="kobition_integration"
         android:icon="@mipmap/ic_launcher">

@@ -86,7 +86,7 @@ workflows:
         - pull_request
         - push
       branch_patterns:              # Include or exclude watched branches
-        - pattern: '*'
+        - pattern: 'master'
           include: true
           source: true
 #     when:

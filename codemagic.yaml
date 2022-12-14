@@ -74,7 +74,7 @@ workflows:
         <<: *env_versions
         <<: *automatic_ios_signing
         flutter: 3.3.6
-        xcode: 14.1
+        xcode: latest
         cocoapods: default
 #         node: 16.16.0
 #         ruby: 3.0.3
@@ -87,8 +87,6 @@ workflows:
         - push
       branch_patterns:              # Include or exclude watched branches
         - pattern: 'master'
-          include: true
-          source: true
 #     when:
 #       changeset:
 #         includes:

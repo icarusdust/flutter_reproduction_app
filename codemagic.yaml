@@ -295,7 +295,13 @@ workflows:
       - build/**/outputs/**/mapping.txt
       - flutter_drive.log
       - test-results-ios/*.json
-#     publishing:
+    publishing:
+       email:
+        recipients:
+          - nihal@nevercode.io
+        notify:
+          success: true # To receive a notification when a build succeeds
+          failure: false # To not receive a notification when a build fails
 #       google_play:
 #         credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
 #         track: internal

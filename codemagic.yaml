@@ -58,6 +58,7 @@ definitions:
         XCODE_WORKSPACE: "App.xcworspace"
         XCODE_SCHEME: "App"
         XCODE_CONFIG: "Release-dev"
+        MARS: "123"
      
 #     browserstack_upload: &browserstack_upload
 #       groups:
@@ -113,7 +114,7 @@ workflows:
     
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |
-          echo "APP_TERMINAL_CODE=test" >> .env
+          echo "APP_TERMINAL_CODE=$MARS" >> .env
           keychain initialize
           /usr/local/bin/docker --version
           echo $PRODUCT_BUILD_NUMBER

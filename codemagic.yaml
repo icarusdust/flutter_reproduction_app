@@ -113,7 +113,7 @@ workflows:
     
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |
-          echo $Mars
+          echo "APP_TERMINAL_CODE=test" >> .env
           keychain initialize
           /usr/local/bin/docker --version
           echo $PRODUCT_BUILD_NUMBER

@@ -118,7 +118,7 @@ workflows:
           keychain initialize
           /usr/local/bin/docker --version
           echo $PRODUCT_BUILD_NUMBER
-          echo $BUILD_NUMBER
+          echo $APP_STORE_CONNECT_PRIVATE_KEY
       - name: Fetch signing files
         script: |
           app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_ADHOC --create

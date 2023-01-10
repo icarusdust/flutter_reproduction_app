@@ -154,7 +154,7 @@ workflows:
 #            flutter -d 0B315533-768E-47B9-AC74-94CDF3FAE84F test integration_test
       - name: Flutter build ipa and automatic versioning
         script: |
-          flutter build ipa --release --dart-define=slack_hook=https://test.com --export-options-plist=/Users/builder/export_options.plist
+          flutter build ipa --export-options-plist=/Users/builder/export_options.plist
 #       - name: Set the app URL and PATH
 #         script: | 
 #               CURL_RESULT=$( curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \

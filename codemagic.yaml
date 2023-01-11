@@ -117,11 +117,11 @@ workflows:
     
       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
         script: |
-#         keychain initialize
-#         /usr/local/bin/docker --version
      
-          echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode > codemagic_api_key.p8
-          echo $APP_STORE_CONNECT_PRIVATE_KEY
+           echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode > codemagic_api_key.p8
+           echo $APP_STORE_CONNECT_PRIVATE_KEY
+           #         keychain initialize
+#         /usr/local/bin/docker --version
 #       - name: Fetch signing files
 #         script: |
 #           app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_ADHOC --create

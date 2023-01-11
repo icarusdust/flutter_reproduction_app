@@ -78,7 +78,7 @@ workflows:
         <<: *env_versions
         <<: *automatic_ios_signing
         flutter: 3.3.10
-        xcode: 14.0.1
+        xcode: 13.4
         cocoapods: 1.11.3
 #         unity: 2021.3.15f1
 #         node: 16.16.0

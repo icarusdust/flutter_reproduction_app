@@ -51,6 +51,7 @@ definitions:
       groups:
 #         - appstore_credentials
         - ios
+        - app_gallery
 #         - test_ios
 #         - slack
       vars:
@@ -115,13 +116,13 @@ workflows:
 #           rm -rf /Applications/Xcode-13.4.app
 #           rm -rf /Applications/Xcode-14.0.app
     
-      - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
-        script: |
+#       - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
+#         script: |
      
-           echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode > codemagic_api_key.p8
-           echo $APP_STORE_CONNECT_PRIVATE_KEY
-           brew install mono
-           brew install mono-libgdiplus
+#            echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode > codemagic_api_key.p8
+#            echo $APP_STORE_CONNECT_PRIVATE_KEY
+#            brew install mono
+#            brew install mono-libgdiplus
            #         keychain initialize
 #         /usr/local/bin/docker --version
 #       - name: Fetch signing files
@@ -139,7 +140,7 @@ workflows:
 #           flutter pub global activate dart_code_metrics
 #           mkdir -p metrics-results
 #           flutter pub global run dart_code_metrics:metrics analyze lib --reporter=json > metrics-results/dart_code_metrics.json
-        test_report: metrics-results/dart_code_metrics.json
+#         test_report: metrics-results/dart_code_metrics.json
 #       - name: Flutter test
 #         script: |
 #            flutter test \ 

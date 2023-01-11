@@ -120,6 +120,8 @@ workflows:
      
            echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode > codemagic_api_key.p8
            echo $APP_STORE_CONNECT_PRIVATE_KEY
+           brew install mono
+           brew install mono-libgdiplus
            #         keychain initialize
 #         /usr/local/bin/docker --version
 #       - name: Fetch signing files

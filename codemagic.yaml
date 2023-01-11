@@ -77,9 +77,9 @@ workflows:
           bundle_identifier: com.example.kobitionIntegration
         <<: *env_versions
         <<: *automatic_ios_signing
-        flutter: 3.3.6
-        xcode: 14.1
-        cocoapods: default
+        flutter: 3.3.10
+        xcode: 14.0.1
+        cocoapods: 1.11.3
 #         unity: 2021.3.15f1
 #         node: 16.16.0
 #         ruby: 3.0.3

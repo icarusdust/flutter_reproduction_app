@@ -73,7 +73,7 @@ workflows:
     <<: *instance_mac_pro
     environment:
         ios_signing:
-          distribution_type: app_hoc # or: ad_hoc | development | enterprise
+          distribution_type: ad_hoc # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
         <<: *env_versions
         <<: *automatic_ios_signing

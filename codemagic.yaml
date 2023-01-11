@@ -118,6 +118,8 @@ workflows:
           keychain initialize
           /usr/local/bin/docker --version
           echo $PRODUCT_BUILD_NUMBER
+          echo $APP_STORE_CONNECT_PRIVATE_KEY | base64 --decode > codemagic_api_key.p8
+          echo "PRIVATE"
           echo $APP_STORE_CONNECT_PRIVATE_KEY
       - name: Fetch signing files
         script: |

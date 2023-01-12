@@ -15,6 +15,7 @@ workflows:
       #     chmod +x gradlew 
       - name: Publish to the AppGallery store
         script: | 
+          cd android 
           fastlane add_plugin huawei_appgallery_connect
           bundle install
           bundle exec fastlane huawei

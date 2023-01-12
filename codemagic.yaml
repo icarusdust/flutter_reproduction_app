@@ -12,7 +12,7 @@ workflows:
       - name: Gradlew
         script: |
           cd android 
-          gradlew wrapper
+          gradle wrapper
           chmod +x gradlew 
       - name: Publish to the AppGallery store
         script: | 

@@ -7,7 +7,7 @@ workflows:
       groups:
         - app_gallery # <-- (Includes CLIENT_ID, CLIENT_SECRET, APP_ID)
       android_signing:
-        - codemagic_test
+        - android_signing
     scripts:
       - chmod +x gradlew
       - name: Publish to the AppGallery store

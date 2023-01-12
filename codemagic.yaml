@@ -9,7 +9,10 @@ workflows:
       android_signing:
         - android_signing
     scripts:
-      - chmod +x gradlew
+      - name: Gradlew
+        script: |
+          cd android \
+          chmod +x gradlew 
       - name: Publish to the AppGallery store
         script: | 
           fastlane add_plugin huawei_appgallery_connect

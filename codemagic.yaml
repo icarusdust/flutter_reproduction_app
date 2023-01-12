@@ -12,13 +12,11 @@ workflows:
       - name: Gradlew
         script: |
           echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"     
-      - name: Publish to the AppGallery store
-        script: | 
-          cd android 
-          gradle wrapper
-          chmod +x gradlew 
       - name: Gradlew
         script: |
+          cd android
+          gradle wrapper
+          chmod +x gradlew 
           fastlane add_plugin huawei_appgallery_connect
           bundle install
           bundle exec fastlane huawei

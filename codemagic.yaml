@@ -81,8 +81,8 @@ workflows:
         flutter: 3.3.10
         xcode: 13.4
         cocoapods: 1.11.3
-        integrations: 
-          app_store_connect: Nevercode
+        # integrations: 
+        #   app_store_connect: Nevercode
 #         unity: 2021.3.15f1
 #         node: 16.16.0
 #         ruby: 3.0.3
@@ -240,10 +240,10 @@ workflows:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
-    publishing:
-      app_store_connect:
-        # Use referenced App Store Connect API key to authenticate binary upload
-        auth: integration 
+    # publishing:
+    #   app_store_connect:
+    #     # Use referenced App Store Connect API key to authenticate binary upload
+    #     auth: integration 
 #         - name: Slack custom
 #           script: |
 #             curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' $WEBHOOK_URL  

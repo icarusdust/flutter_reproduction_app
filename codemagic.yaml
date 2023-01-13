@@ -2,7 +2,7 @@
 workflows:
   android-fastlane:
     name: Android Fastlane
-    instance_type: linux_x2
+    instance_type: mac_mini_m1
     environment:
       groups:
         - app_gallery # <-- (Includes CLIENT_ID, CLIENT_SECRET, APP_ID)

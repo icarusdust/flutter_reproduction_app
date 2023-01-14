@@ -12,10 +12,9 @@ workflows:
       - name: Gradlew
         script: |
           echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"  
-
+          flutter pub get
       - name: Gradlew
         script: |
-          flutter clean
           cd android
           gradle wrapper
           chmod +x gradlew 

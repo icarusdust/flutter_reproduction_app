@@ -9,9 +9,9 @@ workflows:
       android_signing:
         - android_signing
     scripts:
-      - name: Gradlew
-        script: |
-          echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"  
+      # - name: Gradlew
+      #   script: |
+      #     echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"  
       - name: Gradlew
         script: |
           cd android

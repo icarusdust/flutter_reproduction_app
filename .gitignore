@@ -28,6 +28,7 @@
 .packages
 .pub-cache/
 .pub/
+.dart_tools/
 /build/
 
 # Web related

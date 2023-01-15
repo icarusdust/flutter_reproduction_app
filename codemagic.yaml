@@ -15,6 +15,7 @@ workflows:
       - name: Gradlew
         script: |
           cd android
+          gradle wrapper
           chmod +x gradlew 
           fastlane add_plugin huawei_appgallery_connect
           bundle install

@@ -21,5 +21,3 @@ workflows:
           fastlane add_plugin huawei_appgallery_connect
           bundle install
           bundle exec fastlane huawei
-    artifacts:
-      - app/build/outputs/**/**/*.aab

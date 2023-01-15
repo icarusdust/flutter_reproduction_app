@@ -26,9 +26,9 @@
 .flutter-plugins
 .flutter-plugins-dependencies
 .packages
+.dart_tools/
 .pub-cache/
 .pub/
-.dart_tools/
 /build/
 
 # Web related

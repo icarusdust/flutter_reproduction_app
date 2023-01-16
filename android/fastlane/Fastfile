@@ -39,7 +39,7 @@ end
 
 lane :huawei do
   gradle(
-    task: 'assemble', #apk & aab
+    task: 'bundle', #apk & aab
     build_type: 'Debug',
     print_command: true,
   )

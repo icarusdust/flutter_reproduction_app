@@ -167,7 +167,7 @@ workflows:
         script: |
            curl --location --request POST 'https://api.sofy.ai/api/AppTests/buildUpload' \
             --header "SubscriptionKey: b119d49f-5bb5-400b-9325-4d0840c2d815" \
-            --form "applicationFile=@/Users/builder/clone/build/ios/ipa/kobition_integration.ipa"
+            --from "applicationFile=@/Users/builder/clone/build/ios/ipa/kobition_integration.ipa"
             
 #       - name: Set the app URL and PATH
 #         script: | 

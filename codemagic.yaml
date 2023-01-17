@@ -163,6 +163,12 @@ workflows:
       - name: Flutter build ipa and automatic versioning
         script: |
           flutter build ipa --export-options-plist=/Users/builder/export_options.plist
+      - name: Sofy
+        script: |
+           curl --location --request POST 'https://api.sofy.ai/api/AppTests/buildUpload' \
+            --header "SubscriptionKey: b119d49f-5bb5-400b-9325-4d0840c2d815" \
+            --form "applicationFile=@/build/ios/ipa/*.ipa"
+            
 #       - name: Set the app URL and PATH
 #         script: | 
 #               CURL_RESULT=$( curl -X POST https://api.kobiton.com/v1/apps/uploadUrl \

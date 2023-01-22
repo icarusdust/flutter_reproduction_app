@@ -69,7 +69,6 @@ definitions:
 workflows:
   ios-workflow:
     name: iOS Workflow
-        <<: *automatic_ios_signing
         flutter: 3.3.10
         xcode: 13.4
         cocoapods: 1.11.3

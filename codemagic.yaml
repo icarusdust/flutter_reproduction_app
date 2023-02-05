@@ -81,15 +81,15 @@ workflows:
 #     cache:
 #       cache_paths:
 #         - $HOME/Library/Caches/CocoaPods
-    triggering:
-      events:
-        - pull_request
-        - push
-      branch_patterns:              # Include or exclude watched branches
-        - pattern: 'master'
-          include: true
-          source: true
-      cancel_previous_builds: true
+#     triggering:
+#       events:
+#         - pull_request
+#         - push
+#       branch_patterns:              # Include or exclude watched branches
+#         - pattern: 'master'
+#           include: true
+#           source: true
+#       cancel_previous_builds: true
 #     when:
 #       changeset:
 #         includes:
@@ -156,11 +156,12 @@ workflows:
       - name: Flutter build ipa and automatic versioning
         script: |
           flutter build ipa --export-options-plist=/Users/builder/export_options.plist
-      - name: Sofy
-        script: |
-           curl --location --request POST 'https://api.sofy.ai/api/AppTests/buildUpload' \
-            --header "SubscriptionKey: b119d49f-5bb5-400b-9325-4d0840c2d815" \
-            --from "applicationFile=@/Users/builder/clone/build/ios/ipa/kobition_integration.ipa"
+          flutter build ios --debug
+#       - name: Sofy
+#         script: |
+#            curl --location --request POST 'https://api.sofy.ai/api/AppTests/buildUpload' \
+#             --header "SubscriptionKey: b119d49f-5bb5-400b-9325-4d0840c2d815" \
+#             --from "applicationFile=@/Users/builder/clone/build/ios/ipa/kobition_integration.ipa"
             
 #       - name: Set the app URL and PATH
 #         script: | 
@@ -237,6 +238,7 @@ workflows:
 #                   -H 'Accept: application/json'
     artifacts:
       - build/ios/ipa/*.ipa
+      - Users/builder/clone/build/ios/iphoneos/Runner.app
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
     # publishing:

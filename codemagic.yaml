@@ -70,6 +70,8 @@ workflows:
   ios-workflow:
     name: iOS Workflow
     environment:
+        groups:
+          - ios
         flutter: 3.3.10
         xcode: 13.4
         cocoapods: 1.11.3

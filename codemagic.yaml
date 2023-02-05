@@ -71,7 +71,7 @@ workflows:
     name: iOS Workflow
     environment:
         ios_signing:
-          distribution_type: app_store # or: ad_hoc | development | enterprise
+          distribution_type: ad_hoc # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
         flutter: 3.3.10
         xcode: 13.4

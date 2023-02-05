@@ -70,8 +70,9 @@ workflows:
   ios-workflow:
     name: iOS Workflow
     environment:
-        groups:
-          - ios
+        ios_signing:
+          distribution_type: app_store # or: ad_hoc | development | enterprise
+          bundle_identifier: com.example.kobitionIntegration
         flutter: 3.3.10
         xcode: 13.4
         cocoapods: 1.11.3
@@ -122,12 +123,12 @@ workflows:
 #            brew install mono-libgdiplus
            #         keychain initialize
 #         /usr/local/bin/docker --version
-      - name: Fetch signing files
-        script: |
-          app-store-connect fetch-signing-files com.example.kobitionIntegration --type IOS_APP_ADHOC --create
-      - name: Use system default keychain
-        script: |
-          keychain add-certificates
+#       - name: Fetch signing files
+#         script: |
+#           app-store-connect fetch-signing-files com.example.kobitionIntegration --type IOS_APP_ADHOC --create
+#       - name: Use system default keychain
+#         script: |
+#           keychain add-certificates
 #       - *codesign
       - name: Set up code signing settings on Xcode project
         script: |

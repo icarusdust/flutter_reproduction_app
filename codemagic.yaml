@@ -122,7 +122,7 @@ workflows:
 #         /usr/local/bin/docker --version
       - name: Fetch signing files
         script: |
-          app-store-connect fetch-signing-files $BUNDLE_ID --type IOS_APP_ADHOC --create
+          app-store-connect fetch-signing-files com.example.kobitionIntegration --type IOS_APP_ADHOC --create
       - name: Use system default keychain
         script: |
           keychain add-certificates

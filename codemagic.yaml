@@ -132,6 +132,8 @@ workflows:
 #       - *codesign
       - name: Set up code signing settings on Xcode project
         script: |
+          brew update
+          brew upgrade --cask chromedriver
           flutter config --enable-web
           chromedriver --port=4444 &
           xcode-project use-profiles

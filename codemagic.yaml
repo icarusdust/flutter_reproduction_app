@@ -74,7 +74,7 @@ workflows:
           distribution_type: ad_hoc # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
         flutter: 3.3.10
-        xcode: 13.4
+        xcode: 14.2
         cocoapods: 1.11.3
         # integrations: 
         #   app_store_connect: Nevercode

@@ -90,7 +90,7 @@ workflows:
       branch_patterns:              # Include or exclude watched branches
         - pattern: feature/*
           include: true
-          source: false
+          source: true
 #       cancel_previous_builds: true
 #     when:
 #       changeset:

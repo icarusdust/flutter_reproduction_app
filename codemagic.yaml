@@ -73,7 +73,7 @@ workflows:
         ios_signing:
           distribution_type: ad_hoc # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
-        flutter: 3.3.10
+        flutter: stable
         xcode: 14.2
         cocoapods: 1.11.3
         # integrations: 

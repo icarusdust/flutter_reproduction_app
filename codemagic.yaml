@@ -89,7 +89,7 @@ workflows:
         - pull_request
         - push
       branch_patterns:              # Include or exclude watched branches
-        - pattern: 'feature99'
+        - pattern: 'feature/*'
           include: true
           source: false
 #       cancel_previous_builds: true

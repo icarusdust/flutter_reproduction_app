@@ -4,6 +4,7 @@
 #     script: keychain initialize
 #     name: Fetch signing files
 #     script: |
+
 #       # You can allow creating resources if existing are not found with `--create` flag
 #       app-store-connect fetch-signing-files "com.onsitemanagementapp.oma" \
 #         --type IOS_APP_STORE \

@@ -132,11 +132,12 @@ workflows:
 #       - *codesign
       - name: Set up code signing settings on Xcode project
         script: |
-          brew update
-          brew upgrade --cask chromedriver
-          flutter config --enable-web
-          chromedriver --port=4444 &
-          xcode-project use-profiles
+           xcode-project use-profiles
+#         brew update
+#         brew upgrade --cask chromedriver
+#         flutter config --enable-web
+#         chromedriver --port=4444 &
+         
 #       - name: Dart test
 #         script: | 
 #           flutter pub global activate dart_code_metrics
@@ -249,6 +250,21 @@ workflows:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
+    publishing:
+      # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
+      email:
+        recipients:
+          - nihal@nevercode.io
+        notify:
+          success: true # To receive a notification when a build succeeds
+          failure: false # To not receive a notification when a build fails
+      slack:
+        # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
+        channel: "#test_channel"
+        notify_on_build_start: true # To receive a notification when a build starts
+        notify:
+          success: true # To receive a notification when a build succeeds
+          failure: false # To not receive a notification when a build fails
     # publishing:
     #   app_store_connect:
     #     # Use referenced App Store Connect API key to authenticate binary upload

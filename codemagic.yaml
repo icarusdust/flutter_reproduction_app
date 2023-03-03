@@ -69,7 +69,7 @@ definitions:
 workflows:
   ios-workflow:
     name: iOS Workflow
-    instance_type: mac_pro
+    instance_type: mac_mini_m1
     environment:
         ios_signing:
           distribution_type: ad_hoc # or: ad_hoc | development | enterprise

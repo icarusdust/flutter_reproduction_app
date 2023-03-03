@@ -36,7 +36,7 @@ definitions:
     max_build_duration: 120
   env_versions: &env_versions
     flutter: stable
-    xcode: 14.0.1
+    xcode: 13.4
     cocoapods: default
   # triggering:
   #   events:
@@ -69,12 +69,13 @@ definitions:
 workflows:
   ios-workflow:
     name: iOS Workflow
+    instance_type: mac_pro
     environment:
         ios_signing:
           distribution_type: ad_hoc # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
-        flutter: 3.3.10
-        xcode: 14.2
+        flutter: 3.7.3
+        xcode: 13.4
         cocoapods: 1.11.3
         # integrations: 
         #   app_store_connect: Nevercode

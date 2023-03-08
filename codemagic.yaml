@@ -78,7 +78,7 @@ workflows:
         xcode: 14.2
         cocoapods: 1.11.3
         vars:
-          CM_CLONE_DEPTH: 0
+          CM_CLONE_DEPTH: 1
         # integrations: 
         #   app_store_connect: Nevercode
 #         unity: 2021.3.15f1
@@ -87,13 +87,13 @@ workflows:
 #     cache:
 #       cache_paths:
 #         - $HOME/Library/Caches/CocoaPods
-    triggering:
-      events:
-        - pull_request
-      branch_patterns:              # Include or exclude watched branches
-        - pattern: feature/*
-          include: true
-          source: true
+#     triggering:
+#       events:
+#         - pull_request
+#       branch_patterns:              # Include or exclude watched branches
+#         - pattern: feature/*
+#           include: true
+#           source: true
 #       cancel_previous_builds: true
 #     when:
 #       changeset:
@@ -252,21 +252,21 @@ workflows:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
-    publishing:
-      # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
-      email:
-        recipients:
-          - nihal@nevercode.io
-        notify:
-          success: true # To receive a notification when a build succeeds
-          failure: false # To not receive a notification when a build fails
-      slack:
-        # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
-        channel: "#test_channel"
-        notify_on_build_start: true # To receive a notification when a build starts
-        notify:
-          success: true # To receive a notification when a build succeeds
-          failure: false # To not receive a notification when a build fails
+#     publishing:
+#       # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
+#       email:
+#         recipients:
+#           - nihal@nevercode.io
+#         notify:
+#           success: true # To receive a notification when a build succeeds
+#           failure: false # To not receive a notification when a build fails
+#       slack:
+#         # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
+#         channel: "#test_channel"
+#         notify_on_build_start: true # To receive a notification when a build starts
+#         notify:
+#           success: true # To receive a notification when a build succeeds
+#           failure: false # To not receive a notification when a build fails
     # publishing:
     #   app_store_connect:
     #     # Use referenced App Store Connect API key to authenticate binary upload

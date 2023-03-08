@@ -78,7 +78,7 @@ workflows:
         xcode: 14.2
         cocoapods: 1.11.3
         vars:
-          CM_CLONE_DEPTH: 5
+          CM_CLONE_DEPTH: 0
         # integrations: 
         #   app_store_connect: Nevercode
 #         unity: 2021.3.15f1

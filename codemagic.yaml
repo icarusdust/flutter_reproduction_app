@@ -155,6 +155,7 @@ workflows:
           cd . && flutter packages pub get
       - name: Install pods
         script: |
+          gem uninstall cocoapods && sudo gem install cocoapods
           find . -name "Podfile" -execdir pod install \;
      
           

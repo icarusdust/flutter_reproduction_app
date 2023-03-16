@@ -252,20 +252,21 @@ workflows:
       - build/ios/ipa/*.ipa
       - flutter_drive.log
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
-    publishing:
-      # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
-      email:
-        recipients:
-          - nihal@nevercode.io
-#         notify:
-#           success: true # To receive a notification when a build succeeds
-#           failure: false # To not receive a notification when a build fails
-      slack:
-        # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
-        channel: "#test_channel"
-        notify_on_build_start: true # To receive a notification when a build starts
+#     publishing:
+#       # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
+#       email:
+#         recipients:
+#           - nihal@nevercode.io
+# #         notify:
+# #           success: true # To receive a notification when a build succeeds
+# #           failure: false # To not receive a notification when a build fails
+#       slack:
+#         # See the following link about how to connect your Slack account - https://docs.codemagic.io/publishing-yaml/distribution/#slack
+#         channel: "#test_channel"
+#         notify_on_build_start: true # To receive a notification when a build starts
 #         notify:
 #           success: true # To receive a notification when a build succeeds
 #           failure: false # To not receive a notification when a build fails

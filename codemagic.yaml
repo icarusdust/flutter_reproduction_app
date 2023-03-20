@@ -267,7 +267,7 @@ workflows:
                      "branch": "master",
                      "environment": { 
                           "variables": { 
-                              "ARTEFACT_LINK": "echo $CM_ARTIFACT_LINKS | jq -r '.[] | select(.name | endswith("'"$ARTIFACT_TYPE"'")) | .url'"
+                              "ARTEFACT_LINK": "_"
          
                           }
                        }

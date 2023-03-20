@@ -267,7 +267,7 @@ workflows:
                      "branch": "master",
                      "environment": { 
                           "variables": { 
-                              "ARTEFACT_LINK": "$CM_ARTIFACT_LINKS"
+                              "ARTEFACT_LINK": "_"
          
                           }
                        }

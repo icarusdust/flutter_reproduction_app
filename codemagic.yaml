@@ -71,6 +71,8 @@ workflows:
     name: iOS Workflow
     instance_type: mac_mini_m1
     environment:
+        groups:
+          - firebase
         ios_signing:
           distribution_type: ad_hoc # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
@@ -259,7 +261,7 @@ workflows:
        firebase:
          firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
          android:
-           app_id: x:xxxxxxxxxxxx:android:xxxxxxxxxxxxxxxxxxxxxx
+           app_id: 1:283169045807:ios:422387f3cbdf569314f5da
          groups:
            - mars
 

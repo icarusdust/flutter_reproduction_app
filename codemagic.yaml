@@ -260,10 +260,10 @@ workflows:
     publishing:
        firebase:
          firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
-         android:
+         ios:
            app_id: 1:283169045807:ios:422387f3cbdf569314f5da
-         groups:
-           - mars
+           groups:
+              - mars
 
 #           scripts:
 #             - name: Trigger

@@ -256,23 +256,30 @@ workflows:
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
     publishing:
-          scripts:
-            - name: Trigger
-              script: |
-                   curl -H "Content-Type: application/json" \
-                   -H "x-auth-token: UjW3noRBwGnyBlOOfHhc8suwuNZmhT4XP7SaeXV-Z7c" \
-                   --data '{
-                     "appId": "64144a0841c9cf4c07f3f472",
-                     "workflowId": "react-native-android",
-                     "branch": "master",
-                     "environment": { 
-                          "variables": { 
-                              "ARTEFACT_LINK": "_"
+       firebase:
+         firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
+         android:
+           app_id: x:xxxxxxxxxxxx:android:xxxxxxxxxxxxxxxxxxxxxx
+         groups:
+           - mars
+
+#           scripts:
+#             - name: Trigger
+#               script: |
+#                    curl -H "Content-Type: application/json" \
+#                    -H "x-auth-token: UjW3noRBwGnyBlOOfHhc8suwuNZmhT4XP7SaeXV-Z7c" \
+#                    --data '{
+#                      "appId": "64144a0841c9cf4c07f3f472",
+#                      "workflowId": "react-native-android",
+#                      "branch": "master",
+#                      "environment": { 
+#                           "variables": { 
+#                               "ARTEFACT_LINK": "_"
          
-                          }
-                       }
-                   }' \
-                   https://api.codemagic.io/builds
+#                           }
+#                        }
+#                    }' \
+#                    https://api.codemagic.io/builds
 #     publishing:
 #       # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
 #       email:

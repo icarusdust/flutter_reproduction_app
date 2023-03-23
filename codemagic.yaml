@@ -418,8 +418,7 @@ workflows:
           cd . && flutter packages pub get
       - name: Build AAB with Flutter
         script: |
-          flutter build appbundle --release
-# flutter build apk --release 
+          flutter build apk --release 
 #       - name: Flutter Integration Tests iOS
 #         script: |
 #           mkdir -p test-results-ios

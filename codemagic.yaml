@@ -390,7 +390,7 @@ workflows:
       flutter: 3.7.3
       xcode: latest
       java: 1.7
-      ndk: r22b
+      ndk: r21e
       cocoapods: default
 #     triggering:
 #       events:

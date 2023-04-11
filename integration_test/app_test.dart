@@ -9,7 +9,7 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized(); // NEW
 
   testWidgets('failing test example', (tester) async {
-    expect(2 + 2, equals(5));
+    expect(2 + 2, equals(4));
   });
 }
 

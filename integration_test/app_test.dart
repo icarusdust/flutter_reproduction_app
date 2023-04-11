@@ -4,19 +4,28 @@ import 'package:integration_test/integration_test.dart';
 // import 'package:flutter_reproduction_app/main.dart';
 // import 'dart:io';
 
+
 void main() {
-  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized(); // NEW
 
-  testWidgets('No input in name field displays error validation text',
-      (WidgetTester tester) async {
-    await tester.pumpWidget(MyApp());
-
-    await tester.tap(find.byType(FloatingActionButton));
-    await tester.pumpAndSettle();
-
-    expect(find.byType(MyHomePage), findsOneWidget);
-    expect(find.text('Input some text!'), findsOneWidget);
+  testWidgets('failing test example', (tester) async {
+    expect(2 + 2, equals(5));
   });
+}
+
+// void main() {
+//   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+
+//   testWidgets('No input in name field displays error validation text',
+//       (WidgetTester tester) async {
+//     await tester.pumpWidget(MyApp());
+
+//     await tester.tap(find.byType(FloatingActionButton));
+//     await tester.pumpAndSettle();
+
+//     expect(find.byType(MyHomePage), findsOneWidget);
+//     expect(find.text('Input some text!'), findsOneWidget);
+//   });
 
   // testWidgets(
   //   'Text is entered into field and Alert is shown inclucing name entered',

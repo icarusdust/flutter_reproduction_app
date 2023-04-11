@@ -418,12 +418,12 @@ workflows:
       - name: Build AAB with Flutter
         script: |
           flutter build apk --release 
-#       - name: Flutter Integration Tests iOS
-#         script: |
-#           flutter config --enable-web
-#           flutter emulators --launch emulator &
-#           adb wait-for-device
-#           flutter -d emulator-5554 test integration_test
+      - name: Flutter Integration Tests iOS
+        script: |
+          flutter config --enable-web
+          flutter emulators --launch emulator &
+          adb wait-for-device
+          flutter -d emulator-5554 test integration_test
 #           mkdir -p test-results-ios
 #           flutter devices
 #           xcrun simctl list

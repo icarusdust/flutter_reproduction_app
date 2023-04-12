@@ -390,9 +390,9 @@ workflows:
       flutter: 3.7.3
       xcode: latest
       cocoapods: default
-#     triggering:
-#       events:
-#         - push
+    triggering:
+      events:
+        - pull_request
 #     when:
 #       condition: event.head_commit.message == "test12"
     scripts:

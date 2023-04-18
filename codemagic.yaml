@@ -374,7 +374,7 @@ workflows:
 #            source: false
     name: Android Workflow
     max_build_duration: 120
-    instance_type: linux
+    instance_type: mac_pro
     environment:
       android_signing:
         - android_signing
@@ -397,6 +397,9 @@ workflows:
 #     when:
 #       condition: event.head_commit.message == "test12"
     scripts:
+      - name: Azure
+        script: |
+          HOMEBREW_NO_AUTO_UPDATE=1 brew install azure cli
       - name: Set up key properties
         script: |
           export CM_KEYSTORE_PATH='123'

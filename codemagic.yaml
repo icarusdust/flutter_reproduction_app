@@ -398,7 +398,7 @@ workflows:
     scripts:
       - name: Azure
         script: |
-          HOMEBREW_NO_AUTO_UPDATE=1 brew install azure cli
+          HOMEBREW_NO_AUTO_UPDATE=1 brew install azure-cli
       - name: Set up key properties
         script: |
           export CM_KEYSTORE_PATH='123'

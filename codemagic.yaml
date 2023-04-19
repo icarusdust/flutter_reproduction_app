@@ -362,9 +362,9 @@
 
 workflows:
   android-workflow:
-#     triggering:
-#       events:                   
-#          - pull_request
+    triggering:
+      events:                   
+         - pull_request
 #       branch_patterns:                
 #          - pattern: '*'
 #            include: true

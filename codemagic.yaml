@@ -404,6 +404,7 @@ workflows:
           sudo update-java-alternatives --set java-1.17.0-openjdk-amd64
       - name: Azure
         script: |
+          java --version
           HOMEBREW_NO_AUTO_UPDATE=1 brew install azure-cli
       - name: Set up key properties
         script: |

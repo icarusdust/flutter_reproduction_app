@@ -153,8 +153,9 @@ workflows:
       - name: Flutter Integration Tests iOS
         script: |
            flutter emulators --launch apple_ios_simulator
-           xcrun simctl boot 0B315533-768E-47B9-AC74-94CDF3FAE84F
-           flutter -d 0B315533-768E-47B9-AC74-94CDF3FAE84F test integration_test
+           flutter -d iPhone test integration_test
+#  xcrun simctl boot 0B315533-768E-47B9-AC74-94CDF3FAE84F
+#  flutter -d 0B315533-768E-47B9-AC74-94CDF3FAE84F test integration_test
       - name: Get Flutter packages
         script: |
           cd . && flutter packages pub get

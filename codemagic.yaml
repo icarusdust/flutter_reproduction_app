@@ -378,7 +378,7 @@ workflows:
 #            source: false
     name: Android Workflow
     max_build_duration: 120
-    instance_type: linux_x2
+    instance_type: mac_mini_m1
     environment:
       android_signing:
         - android_signing
@@ -392,7 +392,7 @@ workflows:
 #           CM_KEYSTORE_PATH: /tmp/keystore.keystore
 # #           CM_KEY_ALIAS_USERNAME: Encrypted(Z0FBQUFBQmcwbDcweUxYUmxxaTVEeFhxY0hTQWVteUlTMWhiNzVpazlERUFNR1g5akMxLTA4NjVKaXJ2dEdVdDhDRVV5WlNqa25kTW1raDJuYlRiT2o2YW1qTmpMWDc4akE9PQ==) # <-- Put your encrypted keystore alias username here   
       flutter: 3.7.3
-      xcode: latest
+      xcode: 14.2
       cocoapods: default
 #     triggering:
 #       events:
@@ -400,16 +400,20 @@ workflows:
 #     when:
 #       condition: event.head_commit.message == "test12"
     scripts:
-      - name: Java 17
-        script: |
-          sudo apt update && sudo apt upgrade -y
-          sudo apt-get -y install openjdk-17-jdk
-          echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64" >> $CM_ENV
-          sudo update-java-alternatives --set java-1.17.0-openjdk-amd64
-      - name: Azure
-        script: |
-          java --version
-          HOMEBREW_NO_AUTO_UPDATE=1 brew install azure-cli
+        - name: Jave
+          script: |
+           brew install zulu17
+           JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home /Users/builder/programs/gradle-7.3.1/bin/gradle wrapper --gradle-version 7.6 --distribution-type bin
+#       - name: Java 17
+#         script: |
+#           sudo apt update && sudo apt upgrade -y
+#           sudo apt-get -y install openjdk-17-jdk
+#           echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64" >> $CM_ENV
+#           sudo update-java-alternatives --set java-1.17.0-openjdk-amd64
+#       - name: Azure
+#         script: |
+#           java --version
+#           HOMEBREW_NO_AUTO_UPDATE=1 brew install azure-cli
       - name: Set up key properties
         script: |
           export CM_KEYSTORE_PATH='123'

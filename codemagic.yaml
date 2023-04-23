@@ -400,8 +400,8 @@ workflows:
 #     when:
 #       condition: event.head_commit.message == "test12"
     scripts:
-        - name: Jave
-          script: |
+       - name: Jave
+         script: |
            brew install zulu17
            JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home /Users/builder/programs/gradle-7.3.1/bin/gradle wrapper --gradle-version 7.6 --distribution-type bin
 #       - name: Java 17

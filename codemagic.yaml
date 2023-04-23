@@ -406,6 +406,7 @@ workflows:
            cd android
            brew install zulu19
            JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home /Users/builder/programs/gradle-7.3.1/bin/gradle wrapper --gradle-version 7.6 --distribution-type bin
+           gradle --version
 #       - name: Java 17
 #         script: |
 #           sudo apt update && sudo apt upgrade -y

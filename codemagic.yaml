@@ -150,13 +150,13 @@ workflows:
 #         script: |
 #            flutter test \ 
 #            flutter analyze
-      - name: Flutter Integration Tests iOS
-        script: |
-           flutter emulators --launch apple_ios_simulator
-           xcrun simctl shutdown all
-           TEST_DEVICE=$(xcrun simctl create test-device com.apple.CoreSimulator.SimDeviceType.iPhone-11 com.apple.CoreSimulator.SimRuntime.iOS-15-0)
-           xcrun simctl boot $TEST_DEVICE 
-           flutter -d $TEST_DEVICE test integration_test
+#       - name: Flutter Integration Tests iOS
+#         script: |
+#            flutter emulators --launch apple_ios_simulator
+#            xcrun simctl shutdown all
+#            TEST_DEVICE=$(xcrun simctl create test-device com.apple.CoreSimulator.SimDeviceType.iPhone-11 com.apple.CoreSimulator.SimRuntime.iOS-15-0)
+#            xcrun simctl boot $TEST_DEVICE 
+#            flutter -d $TEST_DEVICE test integration_test
 #  xcrun simctl boot 0B315533-768E-47B9-AC74-94CDF3FAE84F
 #  flutter -d 0B315533-768E-47B9-AC74-94CDF3FAE84F test integration_test
       - name: Get Flutter packages

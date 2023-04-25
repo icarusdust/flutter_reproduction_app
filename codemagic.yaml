@@ -136,11 +136,9 @@ workflows:
 #       - *codesign
       - name: Flutter Integration Tests iOS
         script: |
-           flutter emulators --launch apple_ios_simulator
-#    
-          TEST_DEVICE=$(xcrun simctl create test-device com.apple.CoreSimulator.SimDeviceType.iPhone-14 Pro Max com.apple.CoreSimulator.SimRuntime.iOS-16-4)
-
-          flutter -d $TEST_DEVICE test integration_test
+           flutter emulators --launch apple_ios_simulator   
+           TEST_DEVICE=$(xcrun simctl create test-device com.apple.CoreSimulator.SimDeviceType.iPhone-14 Pro Max com.apple.CoreSimulator.SimRuntime.iOS-16-4)
+           flutter -d $TEST_DEVICE test integration_test
       - name: Set up code signing settings on Xcode project
         script: |
            xcode-project use-profiles

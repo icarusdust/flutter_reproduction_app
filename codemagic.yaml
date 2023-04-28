@@ -132,9 +132,9 @@ workflows:
 #         script: |
 #           keychain add-certificates
 #       - *codesign
-      - name: Set up code signing settings on Xcode project
-        script: |
-           xcode-project use-profiles
+#       - name: Set up code signing settings on Xcode project
+#         script: |
+#            xcode-project use-profiles
 #         brew update
 #         brew upgrade --cask chromedriver
 #         flutter config --enable-web

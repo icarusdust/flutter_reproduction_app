@@ -254,11 +254,10 @@ workflows:
 #                   -H 'Accept: application/json'
     artifacts:
       - build/ios/ipa/*.ipa
-      - flutter_drive.log
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
-      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
       - /tmp/xcodebuild_logs/*.log
-      - flutter_drive.log
+#       - flutter_drive.log
+#       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+#       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
 #     publishing:
 #        firebase:
 #          firebase_service_account: $FIREBASE_SERVICE_ACCOUNT

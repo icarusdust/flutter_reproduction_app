@@ -96,7 +96,7 @@ workflows:
           include: true
           source: true
     when:
-      condition: event.pull_request.draft
+      condition: magic
 #       changeset:
 #         includes:
 #           - 'android/'

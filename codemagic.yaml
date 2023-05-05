@@ -88,15 +88,15 @@ workflows:
 #     cache:
 #       cache_paths:
 #         - $HOME/Library/Caches/CocoaPods
-#     triggering:
-#       events:
-#         - pull_request
-#       branch_patterns:              # Include or exclude watched branches
-#         - pattern: "*"
-#           include: true
-#           source: true
-#     when:
-#       condition: event.pull_request.draft
+    triggering:
+      events:
+        - pull_request
+      branch_patterns:              # Include or exclude watched branches
+        - pattern: "*"
+          include: true
+          source: true
+    when:
+      condition: event.pull_request.draft
 #       changeset:
 #         includes:
 #           - 'android/'

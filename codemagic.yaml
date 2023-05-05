@@ -77,7 +77,7 @@ workflows:
           distribution_type: ad_hoc # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
         flutter: 3.7.3
-        xcode: 14.3
+        xcode: 14.2
         java: 19
         cocoapods: 1.11.3
         # integrations: 

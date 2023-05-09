@@ -81,7 +81,7 @@ workflows:
         xcode: 14.3
         cocoapods: 1.12.1
     integrations:
-       app_store_connect: $API_KEY
+       app_store_connect: Nevercode
         # integrations: 
         #   app_store_connect: Nevercode
 #         unity: 2021.3.15f1

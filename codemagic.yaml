@@ -175,6 +175,9 @@ workflows:
         script: |
           flutter build ipa --export-options-plist=/Users/builder/export_options.plist
           flutter build ios --debug
+      - name: Renaming:
+        script: |
+             mv build/ios/ipa/*.ipa build/ios/ipa/jumbo.ipa
 #       - name: Sofy
 #         script: |
 #            curl --location --request POST 'https://api.sofy.ai/api/AppTests/buildUpload' \
@@ -256,6 +259,7 @@ workflows:
 #                   -H 'Accept: application/json'
     artifacts:
       - build/ios/ipa/*.ipa
+      - build/ios/ipa/jumbo.ipa
       - /tmp/xcodebuild_logs/*.log
       - flutter_drive.log
 #       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app

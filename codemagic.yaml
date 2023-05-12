@@ -175,7 +175,7 @@ workflows:
         script: |
           flutter build ipa --export-options-plist=/Users/builder/export_options.plist
           flutter build ios --debug
-      - name: Renaming:
+      - name: Renaming
         script: |
              mv build/ios/ipa/*.ipa build/ios/ipa/jumbo.ipa
 #       - name: Sofy

@@ -167,11 +167,10 @@ workflows:
           cd . && flutter packages pub get
       - name: Install pods
         script: |
-          gem uninstall cocoapods
-          gem install cocoapods
           find . -name "Podfile" -execdir pod install \;
-     
-          
+      - name: 🚀 build number
+        script: |
+          app-store-connect get-latest-app-store-build-number "$APP_ID"
       - name: Flutter build ipa and automatic versioning
         script: |
           flutter build ipa --export-options-plist=/Users/builder/export_options.plist

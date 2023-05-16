@@ -171,7 +171,7 @@ workflows:
           find . -name "Podfile" -execdir pod install \;
       - name: 🚀 build number
         script: |
-          app-store-connect get-latest-app-store-build-number "$APP_ID"
+          app-store-connect get-latest-app-store-build-number "1496105355"
       - name: Flutter build ipa and automatic versioning
         script: |
           flutter build ipa --export-options-plist=/Users/builder/export_options.plist

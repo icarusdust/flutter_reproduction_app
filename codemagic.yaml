@@ -267,13 +267,13 @@ workflows:
       - flutter_drive.log
 #       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
 #       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-#     publishing:
-#        firebase:
-#          firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
-#          ios:
-#            app_id: 1:283169045807:ios:422387f3cbdf569314f5da
-#            groups:
-#               - mars
+    publishing:
+       firebase:
+         firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
+         ios:
+           app_id: 1:283169045807:ios:422387f3cbd
+           groups:
+              - ttt
 
 #           scripts:
 #             - name: Trigger

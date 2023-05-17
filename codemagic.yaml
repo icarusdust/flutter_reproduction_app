@@ -274,6 +274,9 @@ workflows:
            app_id: 1:283169045807:ios:422387f3cbd
            groups:
               - ttt
+       email:
+        recipients:
+          - nihal@nevercode.io
 
 #           scripts:
 #             - name: Trigger
@@ -294,9 +297,6 @@ workflows:
 #                    https://api.codemagic.io/builds
 #     publishing:
 #       # See the following link for details about email publishing - https://docs.codemagic.io/publishing-yaml/distribution/#email
-      email:
-        recipients:
-          - nihal@nevercode.io
 #         notify:
 # #           success: true # To receive a notification when a build succeeds
 # #           failure: false # To not receive a notification when a build fails

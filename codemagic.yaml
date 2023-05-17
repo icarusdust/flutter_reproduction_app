@@ -277,7 +277,9 @@ workflows:
        email:
         recipients:
           - nihal@nevercode.io
-
+        notify:
+          success: true # To receive a notification when a build succeeds
+          failure: true # To not receive a notification when a build fails
 #           scripts:
 #             - name: Trigger
 #               script: |

@@ -74,6 +74,7 @@ workflows:
         groups:
           - firebase
           - ios
+          - test_ios
         ios_signing:
           distribution_type: ad_hoc # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
@@ -138,6 +139,7 @@ workflows:
 #       - *codesign
       - name: Set up code signing settings on Xcode project
         script: |
+           echo $TEST
            xcode-project use-profiles
 #         brew update
 #         brew upgrade --cask chromedriver

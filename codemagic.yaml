@@ -267,19 +267,19 @@ workflows:
       - flutter_drive.log
 #       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
 #       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-    publishing:
-       firebase:
-         firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
-         ios:
-           app_id: 1:283169045807:ios:422387f3cbd
-           groups:
-              - ttt
-       email:
-        recipients:
-          - nihal@nevercode.io
-        notify:
-          success: true # To receive a notification when a build succeeds
-          failure: true # To not receive a notification when a build fails
+#     publishing:
+#        firebase:
+#          firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
+#          ios:
+#            app_id: 1:283169045807:ios:422387f3cbd
+#            groups:
+#               - ttt
+#        email:
+#         recipients:
+#           - nihal@nevercode.io
+#         notify:
+#           success: true # To receive a notification when a build succeeds
+#           failure: true # To not receive a notification when a build fails
 #           scripts:
 #             - name: Trigger
 #               script: |
@@ -450,12 +450,13 @@ workflows:
       - name: Build AAB with Flutter
         script: |
           flutter build apk --release 
-      - name: Flutter Integration Tests iOS
-        script: |
-          flutter config --enable-web
-          flutter emulators --launch emulator &
-          adb wait-for-device
-          flutter -d emulator-5554 test integration_test
+          flutter build appbundle --release 
+#       - name: Flutter Integration Tests iOS
+#         script: |
+#           flutter config --enable-web
+#           flutter emulators --launch emulator &
+#           adb wait-for-device
+#           flutter -d emulator-5554 test integration_test
 #           mkdir -p test-results-ios
 #           flutter devices
 #           xcrun simctl list

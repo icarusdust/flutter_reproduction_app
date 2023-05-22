@@ -79,7 +79,7 @@ workflows:
           distribution_type: ad_hoc # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
         flutter: 3.10.0
-        xcode: 14.2
+        xcode: 14.3
 #         cocoapods: 1.12.1
 #         unity: 2021.3.7f1
 #     integrations:
@@ -138,6 +138,20 @@ workflows:
 #         script: |
 #           keychain add-certificates
 #       - *codesign
+  
+       - name: Exit build if keyword not defined
+         script: | 
+             set -e
+             set -x
+             export COMMIT_MSG=$(git log -1 --pretty=%B)
+             echo COMMIT_MSG
+             if [[ $COMMIT_MSG != *"buildcd"* ]]
+               then
+                 echo "Commit needs to include 'buildcd' in it's message."
+                 exit 1
+               else 
+                 echo "Commit message includes 'buildcd', moving forward..."
+             fi 
       - name: Set up code signing settings on Xcode project
         script: |
            echo $TEST

@@ -139,8 +139,8 @@ workflows:
 #           keychain add-certificates
 #       - *codesign
   
-       - name: Exit build if keyword not defined
-         script: | 
+      - name: Exit build if keyword not defined
+        script: | 
              set -e
              set -x
              export COMMIT_MSG=$(git log -1 --pretty=%B)

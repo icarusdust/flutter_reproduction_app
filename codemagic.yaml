@@ -69,7 +69,7 @@
 workflows:
   ios-workflow:
     name: iOS Workflow
-    instance_type: linux_x2
+    instance_type: mac_mini_m1
     environment:
         groups:
           - firebase
@@ -79,7 +79,7 @@ workflows:
           distribution_type: ad_hoc # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
         flutter: 3.10.0
-        xcode: 14.2
+        xcode: 14.3
 #         cocoapods: 1.12.1
 #         unity: 2021.3.7f1
 #     integrations:

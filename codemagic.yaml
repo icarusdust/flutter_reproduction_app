@@ -92,14 +92,14 @@ workflows:
 #     cache:
 #       cache_paths:
 #         - $HOME/Library/Caches/CocoaPods
-    triggering:
-      events:
-        - push
-        - pull_request
-      branch_patterns:              # Include or exclude watched branches
-        - pattern: "*"
-          include: true
-          source: true
+#     triggering:
+#       events:
+#         - push
+#         - pull_request
+#       branch_patterns:              # Include or exclude watched branches
+#         - pattern: "*"
+#           include: true
+#           source: true
 #     when:
 #       condition: magic
 #       changeset:
@@ -139,22 +139,23 @@ workflows:
 #           keychain add-certificates
 #       - *codesign
   
-      - name: Exit build if keyword not defined
-        script: | 
-             set -e
-             set -x
-             export COMMIT_MSG=$(git log -1 --pretty=%B)
-             echo COMMIT_MSG
-             if [[ $COMMIT_MSG != *"buildcd"* ]]
-               then
-                 echo "Commit needs to include 'buildcd' in it's message."
-                 exit 1
-               else 
-                 echo "Commit message includes 'buildcd', moving forward..."
-             fi 
+#       - name: Exit build if keyword not defined
+#         script: | 
+#              set -e
+#              set -x
+#              export COMMIT_MSG=$(git log -1 --pretty=%B)
+#              echo COMMIT_MSG
+#              if [[ $COMMIT_MSG != *"buildcd"* ]]
+#                then
+#                  echo "Commit needs to include 'buildcd' in it's message."
+#                  exit 1
+#                else 
+#                  echo "Commit message includes 'buildcd', moving forward..."
+#              fi 
       - name: Set up code signing settings on Xcode project
         script: |
-           echo $TEST
+           MARKETING_VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" ios/Runner/Info.plist)
+           echo $MARKETING_VERSION
            xcode-project use-profiles
 #         brew update
 #         brew upgrade --cask chromedriver

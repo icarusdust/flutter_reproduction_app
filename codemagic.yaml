@@ -94,7 +94,6 @@ workflows:
 #         - $HOME/Library/Caches/CocoaPods
     triggering:
       events:
-        - push
         - pull_request
       branch_patterns:              # Include or exclude watched branches
         - pattern: "*"

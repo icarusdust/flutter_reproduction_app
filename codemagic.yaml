@@ -78,7 +78,7 @@ workflows:
         ios_signing:
           distribution_type: ad_hoc # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
-        flutter: stable
+        flutter: 3.7.12
         xcode: 14.3
 #         cocoapods: 1.12.1
 #         unity: 2021.3.7f1
@@ -92,13 +92,13 @@ workflows:
 #     cache:
 #       cache_paths:
 #         - $HOME/Library/Caches/CocoaPods
-    triggering:
-      events:
-        - pull_request
-      branch_patterns:              # Include or exclude watched branches
-        - pattern: "*"
-          include: true
-          source: true
+#     triggering:
+#       events:
+#         - pull_request
+#       branch_patterns:              # Include or exclude watched branches
+#         - pattern: "*"
+#           include: true
+#           source: true
 #     when:
 #       condition: magic
 #       changeset:

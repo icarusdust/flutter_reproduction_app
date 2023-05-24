@@ -78,7 +78,7 @@ workflows:
         ios_signing:
           distribution_type: ad_hoc # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
-        flutter: 3.10.0
+        flutter: stable
         xcode: 14.3
 #         cocoapods: 1.12.1
 #         unity: 2021.3.7f1
@@ -191,7 +191,7 @@ workflows:
 #           app-store-connect get-latest-app-store-build-number "1496105355"
       - name: Flutter build ipa and automatic versioning
         script: |
-          flutter build ipa --export-options-plist=/Users/builder/export_options.plist --verbose
+          flutter build ipa --export-options-plist=/Users/builder/export_options.plist
           flutter build ios --debug
       - name: Renaming
         script: |

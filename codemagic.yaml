@@ -154,7 +154,7 @@ workflows:
         script: |
            MARKETING_VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" ios/Runner/Info.plist)
            echo $MARKETING_VERSION
-           xcode-project use-profiles --project=**/*.xcodeproj
+           xcode-project use-profile --project=**/*.xcodeproj
 #         brew update
 #         brew upgrade --cask chromedriver
 #         flutter config --enable-web

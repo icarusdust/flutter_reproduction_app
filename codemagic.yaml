@@ -91,13 +91,13 @@ workflows:
 #     cache:
 #       cache_paths:
 #         - $HOME/Library/Caches/CocoaPods
-#     triggering:
-#       events:
-#         - pull_request
-#       branch_patterns:              # Include or exclude watched branches
-#         - pattern: "*"
-#           include: true
-#           source: true
+    triggering:
+      events:
+        - pull_request
+      branch_patterns:              # Include or exclude watched branches
+        - pattern: "apple"
+          include: true
+          source: true
 #     when:
 #       condition: magic
 #       changeset:

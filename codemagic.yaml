@@ -193,9 +193,9 @@ workflows:
         script: |
           flutter build ipa --export-options-plist=/Users/builder/export_options.plist --null-safety
           flutter build ios --debug
-      - name: Renaming
-        script: |
-             mv build/ios/ipa/*.ipa build/ios/ipa/jumbo.ipa
+#       - name: Renaming
+#         script: |
+#              mv build/ios/ipa/*.ipa build/ios/ipa/jumbo.ipa
 #       - name: Sofy
 #         script: |
 #            curl --location --request POST 'https://api.sofy.ai/api/AppTests/buildUpload' \

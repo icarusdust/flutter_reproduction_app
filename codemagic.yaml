@@ -329,9 +329,10 @@ workflows:
             api_key: $APP_STORE_CONNECT_PRIVATE_KEY         # Contents of the API key, can also reference environment variable such as $APP_STORE_CONNECT_PRIVATE_KEY
             key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER       # Alphanumeric value that identifies the API key, can also reference environment variable such as $APP_STORE_CONNECT_KEY_IDENTIFIER
             issuer_id: $APP_STORE_CONNECT_ISSUER_ID         # Alphanumeric value that identifies who created the API key, can also reference environment variable such as $APP_STORE_CONNECT_ISSUER_ID
-#           apple_id: nihal@nevercode.io
+       
+#             apple_id: nihal@nevercode.io
 #           password: zlzx-qsjy-nxje-drqe
-v
+
 #       app_store_connect:
 #         # Use referenced App Store Connect API key to authenticate binary upload
 #         auth: integration 

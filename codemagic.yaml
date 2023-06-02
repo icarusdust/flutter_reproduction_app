@@ -76,7 +76,7 @@ workflows:
           - ios
           - test_ios
         ios_signing:
-          distribution_type: ad_hoc # or: ad_hoc | development | enterprise
+          distribution_type: app_store # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
         flutter: 3.7.12
         xcode: 14.3

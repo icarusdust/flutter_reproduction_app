@@ -414,7 +414,7 @@ workflows:
     instance_type: mac_mini_m1
     environment:
       android_signing:
-        - CM_android
+        - android_signing
       groups:
 #         - android
         - firebase_creds

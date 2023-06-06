@@ -79,7 +79,7 @@ workflows:
           distribution_type: app_store # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
         flutter: 3.7.12
-        xcode: 14.2
+        xcode: 14.3
         unity: 2021.3.24f1
         #         cocoapods: 1.12.1
 #     integrations:

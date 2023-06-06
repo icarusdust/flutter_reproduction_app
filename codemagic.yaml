@@ -96,7 +96,7 @@ workflows:
       events:
         - pull_request
       branch_patterns:              # Include or exclude watched branches
-        - pattern: "apple"
+        - pattern: "*"
           include: true
           source: true
 #     when:

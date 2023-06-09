@@ -69,7 +69,7 @@
 workflows:
   ios-workflow:
     name: iOS Workflow
-    instance_type: mac_pro
+    instance_type: mac_mini_m1
     environment:
         groups:
           - firebase

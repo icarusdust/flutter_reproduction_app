@@ -189,10 +189,10 @@ workflows:
 #       - name: 🚀 build number
 #         script: |
 #           app-store-connect get-latest-app-store-build-number "1496105355"
-      - name: Flutter build ipa and automatic versioning
-        script: |
-          flutter build ipa --export-options-plist=/Users/builder/export_options.plist
-          flutter build ios --debug
+#       - name: Flutter build ipa and automatic versioning
+#         script: |
+#           flutter build ipa --export-options-plist=/Users/builder/export_options.plist
+#           flutter build ios --debug
 #       - name: Renaming
 #         script: |
 #              mv build/ios/ipa/*.ipa build/ios/ipa/jumbo.ipa

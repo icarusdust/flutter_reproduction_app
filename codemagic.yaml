@@ -155,7 +155,7 @@ workflows:
         script: |
            MARKETING_VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" ios/Runner/Info.plist)
            echo $MARKETING_VERSION
-           xcode-project use-profiles --project=**/*.xcodeproj
+           xcode-project use-profiles --project=**/*.xcodeprojj
 #         brew update
 #         brew upgrade --cask chromedriver
 #         flutter config --enable-web
@@ -282,19 +282,19 @@ workflows:
       - flutter_drive.log
 #       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
 #       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-#     publishing:
+    publishing:
 #        firebase:
 #          firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
 #          ios:
 #            app_id: 1:283169045807:ios:422387f3cbd
 #            groups:
 #               - ttt
-#        email:
-#         recipients:
-#           - nihal@nevercode.io
-#         notify:
-#           success: true # To receive a notification when a build succeeds
-#           failure: true # To not receive a notification when a build fails
+       email:
+        recipients:
+          - nihal@nevercode.io
+        notify:
+          success: true # To receive a notification when a build succeeds
+          failure: true # To not receive a notification when a build fails
 #           scripts:
 #             - name: Trigger
 #               script: |

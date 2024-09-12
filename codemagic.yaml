@@ -537,8 +537,7 @@ workflows:
 #       - ./chromedriver --port=4444 &
 #       - flutter -d chrome drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart
 
-#     artifacts:
-#       - flutter_drive.log
+#
       
 
 

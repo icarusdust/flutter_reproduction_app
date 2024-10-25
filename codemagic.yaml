@@ -71,10 +71,6 @@ workflows:
     name: iOS Workflow
     instance_type: mac_mini_m1
     environment:
-        groups:
-          - firebase
-          - ios
-          - test_ios
         ios_signing:
           distribution_type: app_store # or: ad_hoc | development | enterprise
           bundle_identifier: com.example.kobitionIntegration
